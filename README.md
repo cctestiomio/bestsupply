@@ -2,34 +2,15 @@
 
 A minimal curated.supply-style product directory where users can vote for products and click buy buttons that use your affiliate links.
 
-This version includes **real public/global votes** through Supabase.
-
-## What is included
+This version includes:
 
 - Vite + React frontend
-- Minimal product grid
-- Category filters
-- Search
-- Sort by top voted, newest, or A–Z
 - Supabase-backed global voting
 - One vote per product per browser
-- Affiliate-ready buy buttons
-- Admin-editable product file at `src/products.js`
-- Supabase SQL schema at `supabase/schema.sql`
-
-## How global voting works
-
-Each visitor gets a browser-generated `voter_id` saved in `localStorage`.
-
-When they vote, the app inserts this row into Supabase:
-
-```txt
-product_id + voter_id
-```
-
-The database has a unique constraint on `(product_id, voter_id)`, so the same browser cannot vote twice for the same product.
-
-This is good for a public MVP. It is not bot-proof. For stronger protection later, add login, CAPTCHA, rate limiting, or server-side vote validation.
+- Product detail pages
+- Password-protected admin page at `/#admin`
+- Permanent product edits saved to Supabase
+- Product image URL fallbacks from approved/direct product pages
 
 ## Supabase setup
 
@@ -41,53 +22,88 @@ This is good for a public MVP. It is not bot-proof. For stronger protection late
 supabase/schema.sql
 ```
 
-4. Go to **Project Settings → API**.
-5. Copy:
-   - Project URL
-   - anon public key
+This creates:
 
-## Local environment variables
+- `product_votes` for global votes
+- `product_vote_counts` view for public vote counts
+- `product_overrides` for admin-saved product edits
 
-Create a `.env` file in the project root:
+## Vercel environment variables
 
-```bash
-cp .env.example .env
-```
+Add these in **Vercel → Project → Settings → Environment Variables**.
 
-Fill it in:
+Client/public variables:
 
 ```txt
-VITE_SUPABASE_URL=https://your-project-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-public-key
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-publishable-or-anon-key
 ```
 
-## How to customize products and affiliate links
+Server-only admin variables:
+
+```txt
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+ADMIN_PASSWORD=69frozen420
+```
+
+Important:
+
+- Do **not** make `SUPABASE_SERVICE_ROLE_KEY` public.
+- Do **not** prefix it with `VITE_` or `NEXT_PUBLIC_`.
+- The admin page will not be able to save permanently unless `SUPABASE_SERVICE_ROLE_KEY` is set.
+
+After adding env vars, redeploy the Vercel project.
+
+## Admin page
 
 Open:
 
 ```txt
-src/products.js
+https://your-site.vercel.app/#admin
 ```
 
-Edit or add products like this:
+Password:
 
-```js
-{
-  id: "unique-product-id",
-  name: "Product Name",
-  brand: "Brand",
-  category: "Category",
-  tag: "Best In Class Label",
-  description: "Short product description.",
-  image: "https://image-url.com/image.jpg",
-  affiliateUrl: "https://your-affiliate-link.com",
-  startingVotes: 0
-}
+```txt
+69frozen420
 ```
 
-Important: keep `id` stable. Supabase votes are attached to the product ID. If you change an ID later, that product's old votes will no longer match.
+The admin page lets you edit:
 
-## Run locally
+- product name
+- brand
+- category
+- badge/tag
+- price
+- card description
+- detail page about text
+- direct image URL
+- buy/affiliate URL
+- Amazon fallback URL
+- eBay fallback URL
+
+Saved changes are written to Supabase `product_overrides` and automatically appear on the normal public site.
+
+## Product images
+
+The safest setup is to use image URLs you are allowed to use:
+
+- affiliate product-feed images
+- official merchant/retailer product page metadata
+- manufacturer press assets
+- your own Cloudinary/Supabase Storage/S3 images
+- your own photos
+
+Image loading order:
+
+1. `image` direct URL, if set in admin
+2. `affiliateUrl` exact official/retailer product page
+3. `amazonUrl` exact product page
+4. `ebayUrl` exact product listing page
+
+Search-result URLs are skipped because they often return generic SEO/banner/stock images.
+
+## Local dev
 
 ```bash
 npm install
@@ -96,58 +112,15 @@ npm run dev
 
 ## Deploy to Vercel through GitHub
 
-1. Create a new GitHub repository.
-2. Upload all files from this folder to the repository.
-3. Go to Vercel.
-4. Click **Add New Project**.
-5. Import your GitHub repository.
-6. Keep the defaults:
-   - Framework Preset: `Vite`
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-7. Before deploying, add these Vercel environment variables:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-8. Click **Deploy**.
+1. Create a GitHub repo.
+2. Upload all files from this folder.
+3. Import the repo in Vercel.
+4. Framework Preset: `Vite`.
+5. Build Command: `npm run build`.
+6. Output Directory: `dist`.
+7. Add the env vars above.
+8. Deploy.
 
-## Admin notes
+## Notes
 
-For the MVP, products are managed by editing `src/products.js` and redeploying.
-
-Good next upgrades:
-
-- Admin dashboard to add/edit products without editing code
-- Product submission queue
-- Login-based voting
-- Vote audit table with IP hash / user agent hash
-- Daily rate limits
-- Product pages with comments and reviews
-
-
-## Troubleshooting vote insert errors
-
-This patched build stores `product_id` and `voter_id` as text strings before inserting into Supabase. If voting fails, open the browser console to see the exact Supabase error shown in the site notice. Re-run `supabase/schema.sql` after replacing the database schema.
-
-## Product images
-
-Product cards now load images in this order:
-
-1. `image` direct URL, if you add one
-2. `affiliateUrl` official/retailer product page
-3. `amazonUrl` fallback
-4. `ebayUrl` fallback
-
-The Vercel function at `api/product-image.js` reads the page metadata and redirects to the product image, so you are not copying Curated Supply images or rehosting them. For best results, replace the generated Amazon/eBay search URLs in `src/products.js` with exact affiliate product-page URLs.
-
-
-## Product images
-
-This version does **not** use copied Curated Supply images and does **not** use Amazon/eBay search-result pages as image fallbacks. Search pages often return generic SEO, banner, or stock images that are unrelated to the actual product.
-
-Image loading now works like this:
-
-1. `image` — best option. Paste an approved direct image URL from your affiliate feed, merchant assets, Cloudinary, Supabase Storage, S3, etc.
-2. `affiliateUrl` — exact official product/detail page. The Vercel API attempts to read JSON-LD or Open Graph product image metadata.
-3. `amazonUrl` / `ebayUrl` — only use exact product listing URLs, not search URLs. Search URLs are skipped automatically.
-
-If no approved image metadata exists, the site shows a neutral empty image area instead of a fake/stock placeholder.
+Keep product `id` values stable. Supabase votes and admin overrides are attached to product IDs. If you change an ID, the old votes/edits will no longer match that product.

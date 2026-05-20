@@ -5,14 +5,12 @@ import { products as productData } from "./products";
 import { isSupabaseConfigured, supabase } from "./supabase";
 import "./styles.css";
 
-const categories = ["All", ...Array.from(new Set(productData.map((product) => product.category)))];
-
 function productKey(productId) {
   return String(productId);
 }
 
-function startingVoteMap() {
-  return productData.reduce((acc, product) => {
+function startingVoteMap(products = productData) {
+  return products.reduce((acc, product) => {
     acc[productKey(product.id)] = product.startingVotes || 0;
     return acc;
   }, {});
@@ -32,6 +30,10 @@ function getHashRoute() {
   const hash = window.location.hash || "";
   const match = hash.match(/^#product\/(.+)$/);
   return match ? decodeURIComponent(match[1]) : null;
+}
+
+function isAdminRoute() {
+  return (window.location.hash || "") === "#admin";
 }
 
 function productPath(product) {
@@ -113,8 +115,58 @@ function ProductImage({ product, large = false }) {
   );
 }
 
+
+const overrideToProductFields = {
+  product_id: "id",
+  name: "name",
+  brand: "brand",
+  category: "category",
+  tag: "tag",
+  description: "description",
+  about: "about",
+  image: "image",
+  affiliate_url: "affiliateUrl",
+  amazon_url: "amazonUrl",
+  ebay_url: "ebayUrl",
+  price: "price",
+};
+
+const editableFields = [
+  ["name", "Name", "text"],
+  ["brand", "Brand", "text"],
+  ["category", "Category", "text"],
+  ["tag", "Badge/tag", "text"],
+  ["price", "Price", "text"],
+  ["description", "Short card description", "textarea"],
+  ["about", "Detail page about text", "textarea"],
+  ["image", "Direct approved image URL", "url"],
+  ["affiliateUrl", "Buy / affiliate URL", "url"],
+  ["amazonUrl", "Amazon fallback product URL", "url"],
+  ["ebayUrl", "eBay fallback product URL", "url"],
+];
+
+function normalizeOverride(row) {
+  const next = {};
+  for (const [dbKey, productKeyName] of Object.entries(overrideToProductFields)) {
+    if (dbKey === "product_id") continue;
+    if (row[dbKey] !== null && row[dbKey] !== undefined) {
+      next[productKeyName] = row[dbKey];
+    }
+  }
+  return next;
+}
+
+function applyProductOverrides(baseProducts, rows = []) {
+  const byId = new Map(rows.map((row) => [productKey(row.product_id), normalizeOverride(row)]));
+  return baseProducts.map((product) => {
+    const override = byId.get(productKey(product.id));
+    return override ? { ...product, ...override } : product;
+  });
+}
+
 function App() {
-  const [votes, setVotes] = useState(startingVoteMap);
+  const [products, setProducts] = useState(productData);
+  const [votes, setVotes] = useState(() => startingVoteMap(productData));
   const [votedIds, setVotedIds] = useState(() => {
     const saved = JSON.parse(localStorage.getItem("best-supply-voted-ids") || "[]");
     return saved.map(String);
@@ -125,11 +177,28 @@ function App() {
   const [isLoadingVotes, setIsLoadingVotes] = useState(true);
   const [voteError, setVoteError] = useState("");
   const [routeProductId, setRouteProductId] = useState(getHashRoute());
+  const [adminRoute, setAdminRoute] = useState(isAdminRoute());
 
   useEffect(() => {
-    const onHashChange = () => setRouteProductId(getHashRoute());
+    const onHashChange = () => {
+      setRouteProductId(getHashRoute());
+      setAdminRoute(isAdminRoute());
+    };
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  useEffect(() => {
+    async function loadProductOverrides() {
+      if (!isSupabaseConfigured) return;
+
+      const { data, error } = await supabase.from("product_overrides").select("*");
+      if (!error && data) {
+        setProducts(applyProductOverrides(productData, data));
+      }
+    }
+
+    loadProductOverrides();
   }, []);
 
   useEffect(() => {
@@ -141,7 +210,7 @@ function App() {
       }
 
       const voterId = getOrCreateVoterId();
-      const startingVotes = startingVoteMap();
+      const startingVotes = startingVoteMap(productData);
 
       const [countsResult, voterResult] = await Promise.all([
         supabase.from("product_vote_counts").select("product_id,votes"),
@@ -169,10 +238,12 @@ function App() {
     loadGlobalVotes();
   }, []);
 
+  const categories = useMemo(() => ["All", ...Array.from(new Set(products.map((product) => product.category)))], [products]);
+
   const filteredProducts = useMemo(() => {
     const normalized = query.trim().toLowerCase();
 
-    let list = productData.filter((product) => {
+    let list = products.filter((product) => {
       const matchesCategory = category === "All" || product.category === category;
       const matchesQuery =
         !normalized ||
@@ -185,11 +256,11 @@ function App() {
     });
 
     if (sort === "top") list.sort((a, b) => (votes[productKey(b.id)] || 0) - (votes[productKey(a.id)] || 0));
-    if (sort === "new") list.sort((a, b) => productData.indexOf(b) - productData.indexOf(a));
+    if (sort === "new") list.sort((a, b) => products.indexOf(b) - products.indexOf(a));
     if (sort === "az") list.sort((a, b) => a.name.localeCompare(b.name));
 
     return list;
-  }, [category, query, sort, votes]);
+  }, [category, query, sort, votes, products]);
 
   async function vote(productId) {
     const id = productKey(productId);
@@ -225,7 +296,7 @@ function App() {
     }
   }
 
-  const currentProduct = routeProductId ? productData.find((product) => product.id === routeProductId) : null;
+  const currentProduct = routeProductId ? products.find((product) => product.id === routeProductId) : null;
 
   return (
     <main>
@@ -235,10 +306,11 @@ function App() {
           <nav>
             <a href="#products">Products</a>
             <a href="#about">About</a>
+            <a href="#admin">Admin</a>
           </nav>
         </div>
 
-        {!currentProduct && (
+        {!currentProduct && !adminRoute && (
           <section className="hero">
             <p className="eyebrow">Community-ranked product directory</p>
             <h1>Best-in-class products, voted by people with taste.</h1>
@@ -259,8 +331,10 @@ function App() {
         </section>
       )}
 
-      {currentProduct ? (
-        <ProductDetail product={currentProduct} votes={votes} votedIds={votedIds} isLoadingVotes={isLoadingVotes} vote={vote} />
+      {adminRoute ? (
+        <AdminPage products={products} setProducts={setProducts} />
+      ) : currentProduct ? (
+        <ProductDetail product={currentProduct} products={products} votes={votes} votedIds={votedIds} isLoadingVotes={isLoadingVotes} vote={vote} />
       ) : (
         <>
           <section className="controls" id="products">
@@ -309,6 +383,126 @@ function App() {
   );
 }
 
+
+function AdminPage({ products, setProducts }) {
+  const [password, setPassword] = useState("");
+  const [unlocked, setUnlocked] = useState(false);
+  const [selectedId, setSelectedId] = useState(products[0]?.id || "");
+  const [form, setForm] = useState(products[0] || {});
+  const [status, setStatus] = useState("");
+  const selectedProduct = products.find((product) => product.id === selectedId) || products[0];
+
+  useEffect(() => {
+    if (selectedProduct) setForm({ ...selectedProduct });
+  }, [selectedId, selectedProduct?.id]);
+
+  function login(event) {
+    event.preventDefault();
+    if (password === "69frozen420") {
+      setUnlocked(true);
+      setStatus("");
+    } else {
+      setStatus("Wrong password.");
+    }
+  }
+
+  function updateField(field, value) {
+    setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  async function saveProduct(event) {
+    event.preventDefault();
+    setStatus("Saving...");
+
+    try {
+      const response = await fetch("/api/admin-products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, product: form }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.error || "Save failed");
+      }
+
+      setProducts((current) => current.map((product) => (product.id === form.id ? { ...product, ...form } : product)));
+      setStatus("Saved. The public site now uses this updated product data.");
+    } catch (error) {
+      setStatus(`Save failed: ${error.message}`);
+    }
+  }
+
+  if (!unlocked) {
+    return (
+      <section className="admin-page">
+        <div className="admin-panel admin-login">
+          <p className="eyebrow">Admin</p>
+          <h1>Edit products</h1>
+          <p className="admin-copy">Enter the admin password to edit product text, image URLs, prices, and buy links directly from the website.</p>
+          <form onSubmit={login} className="admin-login-form">
+            <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Admin password" autoFocus />
+            <button className="primary-link" type="submit">Unlock admin</button>
+          </form>
+          {status && <p className="admin-status">{status}</p>}
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="admin-page">
+      <div className="admin-heading">
+        <div>
+          <p className="eyebrow">Admin</p>
+          <h1>Edit products</h1>
+          <p className="admin-copy">Changes are saved to Supabase and applied on the normal public product pages.</p>
+        </div>
+        <a className="secondary-link" href="#products">View public site</a>
+      </div>
+
+      <div className="admin-layout">
+        <aside className="admin-list">
+          <input className="admin-search" placeholder="Select product..." readOnly value={`${products.length} products`} />
+          {products.map((product) => (
+            <button key={product.id} className={selectedId === product.id ? "active" : ""} onClick={() => setSelectedId(product.id)}>
+              <strong>{product.name}</strong>
+              <span>{product.brand} · {product.category}</span>
+            </button>
+          ))}
+        </aside>
+
+        <form className="admin-editor" onSubmit={saveProduct}>
+          <div className="admin-preview">
+            <ProductImage product={form} large />
+          </div>
+
+          <label>
+            Product ID
+            <input value={form.id || ""} disabled />
+          </label>
+
+          {editableFields.map(([field, label, type]) => (
+            <label key={field}>
+              {label}
+              {type === "textarea" ? (
+                <textarea rows={field === "about" ? 7 : 3} value={form[field] || ""} onChange={(event) => updateField(field, event.target.value)} />
+              ) : (
+                <input type={type} value={form[field] || ""} onChange={(event) => updateField(field, event.target.value)} />
+              )}
+            </label>
+          ))}
+
+          <div className="admin-actions">
+            <button className="primary-link" type="submit">Save changes</button>
+            {status && <span className="admin-status">{status}</span>}
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
 function ProductCard({ product, votes, votedIds, isLoadingVotes, vote }) {
   const id = productKey(product.id);
   const hasVoted = votedIds.includes(id);
@@ -343,13 +537,13 @@ function ProductCard({ product, votes, votedIds, isLoadingVotes, vote }) {
   );
 }
 
-function ProductDetail({ product, votes, votedIds, isLoadingVotes, vote }) {
+function ProductDetail({ product, products, votes, votedIds, isLoadingVotes, vote }) {
   const id = productKey(product.id);
   const hasVoted = votedIds.includes(id);
-  const related = productData
+  const related = products
     .filter((item) => item.id !== product.id && item.category === product.category)
     .slice(0, 3);
-  const featured = productData.filter((item) => item.id !== product.id).slice(0, 3);
+  const featured = products.filter((item) => item.id !== product.id).slice(0, 3);
 
   return (
     <section className="detail-page">
