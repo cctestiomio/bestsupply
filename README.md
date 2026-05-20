@@ -127,3 +127,14 @@ Good next upgrades:
 ## Troubleshooting vote insert errors
 
 This patched build stores `product_id` and `voter_id` as text strings before inserting into Supabase. If voting fails, open the browser console to see the exact Supabase error shown in the site notice. Re-run `supabase/schema.sql` after replacing the database schema.
+
+## Product images
+
+Product cards now load images in this order:
+
+1. `image` direct URL, if you add one
+2. `affiliateUrl` official/retailer product page
+3. `amazonUrl` fallback
+4. `ebayUrl` fallback
+
+The Vercel function at `api/product-image.js` reads the page metadata and redirects to the product image, so you are not copying Curated Supply images or rehosting them. For best results, replace the generated Amazon/eBay search URLs in `src/products.js` with exact affiliate product-page URLs.

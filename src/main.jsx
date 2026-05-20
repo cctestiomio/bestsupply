@@ -38,17 +38,56 @@ function productPath(product) {
   return `#product/${encodeURIComponent(product.id)}`;
 }
 
+function getProductImageSources(product) {
+  return [product.image, product.affiliateUrl, product.amazonUrl, product.ebayUrl]
+    .filter(Boolean)
+    .map((source) => String(source).trim())
+    .filter(Boolean);
+}
+
+function imageResolverUrl(source, product) {
+  const params = new URLSearchParams({
+    url: source,
+    name: `${product.brand} ${product.name}`,
+  });
+
+  return `/api/product-image?${params.toString()}`;
+}
+
 function ProductImage({ product, large = false }) {
-  const hasImage = Boolean(product.image && product.image.trim());
+  const sources = getProductImageSources(product);
+  const [sourceIndex, setSourceIndex] = useState(0);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setSourceIndex(0);
+    setFailed(false);
+  }, [product.id]);
+
+  const source = sources[sourceIndex];
+
+  function handleImageError() {
+    if (sourceIndex < sources.length - 1) {
+      setSourceIndex((index) => index + 1);
+      return;
+    }
+
+    setFailed(true);
+  }
+
   return (
     <div className={large ? "product-image product-image-large" : "product-image"}>
-      {hasImage ? (
-        <img src={product.image} alt={`${product.brand} ${product.name}`} />
+      {source && !failed ? (
+        <img
+          src={imageResolverUrl(source, product)}
+          alt={`${product.brand} ${product.name}`}
+          loading={large ? "eager" : "lazy"}
+          onError={handleImageError}
+        />
       ) : (
-        <div className="image-placeholder" aria-label={`${product.name} image placeholder`}>
+        <div className="image-unavailable" aria-label={`${product.name} image unavailable`}>
           <span>{product.brand}</span>
           <strong>{product.name}</strong>
-          <small>Add licensed product image in products.js</small>
         </div>
       )}
     </div>
@@ -319,7 +358,7 @@ function ProductDetail({ product, votes, votedIds, isLoadingVotes, vote }) {
       <section className="detail-about">
         <h2>About</h2>
         <p>{product.about || `${product.name} by ${product.brand} is listed as a community pick in ${product.category}. Add a richer product write-up in products.js when you publish your final affiliate page.`}</p>
-        <p className="image-note">Image note: this template intentionally avoids copied directory images. Add images from your own photography, a merchant-approved affiliate feed, or another licensed source.</p>
+        <p className="image-note">Images are loaded from the official product page first, then Amazon, then eBay. For best reliability, replace fallback URLs in products.js with exact affiliate product-page URLs.</p>
       </section>
 
       {related.length > 0 && (

@@ -2,6 +2,8 @@
 // Use only product images you have rights to use: your own photos, merchant/affiliate-feed images, or images explicitly licensed for your site.
 // Do not hotlink/copy images from other curated directories. Add licensed image URLs in the image field.
 // price is shown beside the Buy button. Replace affiliateUrl values with your own affiliate links.
+// Images are resolved from official product pages first, then Amazon, then eBay via /api/product-image.
+// For best results, replace amazonUrl/ebayUrl with exact affiliate product-page URLs instead of search URLs.
 
 export const products = [
   {
@@ -13,6 +15,8 @@ export const products = [
     "description": "A design-led tech pick from Apple.",
     "image": "",
     "affiliateUrl": "https://www.apple.com/shop/buy-mac/apple-studio-display",
+    "amazonUrl": "https://www.amazon.com/s?k=Apple+Studio+Display",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Apple+Studio+Display",
     "price": "$1,599",
     "startingVotes": 980
   },
@@ -25,6 +29,8 @@ export const products = [
     "description": "A design-led carry pick from Grams28.",
     "image": "",
     "affiliateUrl": "https://www.grams28.com/products/151-stealth-backpack",
+    "amazonUrl": "https://www.amazon.com/s?k=Grams28+151+Stealth+Backpack",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Grams28+151+Stealth+Backpack",
     "price": "$889",
     "startingVotes": 973
   },
@@ -37,6 +43,8 @@ export const products = [
     "description": "A design-led workspace pick from Herman Miller.",
     "image": "",
     "affiliateUrl": "https://store.hermanmiller.com/office-chairs-aeron/aeron-chair/2195348.html",
+    "amazonUrl": "https://www.amazon.com/s?k=Herman+Miller+Aeron",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Herman+Miller+Aeron",
     "price": "$1,930",
     "startingVotes": 966
   },
@@ -49,6 +57,8 @@ export const products = [
     "description": "A design-led coffee pick from Fellow.",
     "image": "",
     "affiliateUrl": "https://fellowproducts.com/products/stagg-ekg-electric-kettle",
+    "amazonUrl": "https://www.amazon.com/s?k=Fellow+Stagg+EKG+Electric+Kettle",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Fellow+Stagg+EKG+Electric+Kettle",
     "price": "$200",
     "startingVotes": 959
   },
@@ -61,6 +71,8 @@ export const products = [
     "description": "A design-led vehicles pick from Porsche.",
     "image": "",
     "affiliateUrl": "https://www.porsche.com/usa/models/911/911-turbo-models/911-turbo-s/",
+    "amazonUrl": "https://www.amazon.com/s?k=Porsche+911+Turbo+S",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Porsche+911+Turbo+S",
     "price": "$270,000",
     "startingVotes": 952
   },
@@ -73,6 +85,8 @@ export const products = [
     "description": "A design-led watches pick from Omega.",
     "image": "",
     "affiliateUrl": "https://www.omegawatches.com/en-us/watches/speedmaster",
+    "amazonUrl": "https://www.amazon.com/s?k=Omega+Speedmaster",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Omega+Speedmaster",
     "price": "$7,800",
     "startingVotes": 945
   },
@@ -85,6 +99,8 @@ export const products = [
     "description": "A design-led books pick from Phaidon.",
     "image": "",
     "affiliateUrl": "https://www.phaidon.com/store/design/dieter-rams-the-complete-works-9781838669095/",
+    "amazonUrl": "https://www.amazon.com/s?k=Phaidon+Dieter+Rams%3A+The+Complete+Works",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Phaidon+Dieter+Rams%3A+The+Complete+Works",
     "price": "$59",
     "startingVotes": 938
   },
@@ -97,6 +113,8 @@ export const products = [
     "description": "A design-led books pick from Taschen.",
     "image": "",
     "affiliateUrl": "https://www.taschen.com/en/books/fashion/04687/virgil-abloh-nike-icons/",
+    "amazonUrl": "https://www.amazon.com/s?k=Taschen+Virgil+Abloh.+Nike.+ICONS",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Taschen+Virgil+Abloh.+Nike.+ICONS",
     "price": "$59",
     "startingVotes": 931
   },
@@ -109,6 +127,8 @@ export const products = [
     "description": "A design-led home pick from Lego.",
     "image": "",
     "affiliateUrl": "https://www.lego.com/en-us/product/porsche-911-10295",
+    "amazonUrl": "https://www.amazon.com/s?k=Lego+Icons+10295+Porsche+911",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Lego+Icons+10295+Porsche+911",
     "price": "$170",
     "startingVotes": 924
   },
@@ -121,6 +141,8 @@ export const products = [
     "description": "A design-led workspace pick from Work Louder.",
     "image": "",
     "affiliateUrl": "https://worklouder.cc/products/knob-1",
+    "amazonUrl": "https://www.amazon.com/s?k=Work+Louder+k%E2%80%A2no%E2%80%A2b%E2%80%A21",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Work+Louder+k%E2%80%A2no%E2%80%A2b%E2%80%A21",
     "price": "$439",
     "startingVotes": 917
   },
@@ -133,6 +155,8 @@ export const products = [
     "description": "A design-led tech pick from Nothing.",
     "image": "",
     "affiliateUrl": "https://nothing.tech/products/phone-3a-pro",
+    "amazonUrl": "https://www.amazon.com/s?k=Nothing+Phone+%284a%29+Pro",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Nothing+Phone+%284a%29+Pro",
     "price": "$500",
     "startingVotes": 910
   },
@@ -145,6 +169,8 @@ export const products = [
     "description": "A design-led cameras pick from Sigma.",
     "image": "",
     "affiliateUrl": "https://www.sigmaphoto.com/cameras/bf-camera",
+    "amazonUrl": "https://www.amazon.com/s?k=Sigma+BF",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Sigma+BF",
     "price": "$2,199",
     "startingVotes": 903
   },
@@ -157,6 +183,8 @@ export const products = [
     "description": "A design-led watches pick from Rolex.",
     "image": "",
     "affiliateUrl": "https://www.rolex.com/watches/datejust",
+    "amazonUrl": "https://www.amazon.com/s?k=Rolex+Datejust",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Rolex+Datejust",
     "price": "$10,000",
     "startingVotes": 896
   },
@@ -169,6 +197,8 @@ export const products = [
     "description": "A design-led carry pick from Goyard.",
     "image": "",
     "affiliateUrl": "https://www.goyard.com/us_en/portefeuille-saint-florentin.html",
+    "amazonUrl": "https://www.amazon.com/s?k=Goyard+Saint-Florentin+Wallet",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Goyard+Saint-Florentin+Wallet",
     "price": "$1,500",
     "startingVotes": 889
   },
@@ -181,6 +211,8 @@ export const products = [
     "description": "A design-led workspace pick from Nomad.",
     "image": "",
     "affiliateUrl": "https://nomadgoods.com/products/base-one-max-3-in-1",
+    "amazonUrl": "https://www.amazon.com/s?k=Nomad+Base+One+Max+3-in-1",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Nomad+Base+One+Max+3-in-1",
     "price": "$149",
     "startingVotes": 882
   },
@@ -193,6 +225,8 @@ export const products = [
     "description": "A design-led workspace pick from Lofree.",
     "image": "",
     "affiliateUrl": "https://www.lofree.co/products/flow-2",
+    "amazonUrl": "https://www.amazon.com/s?k=Lofree+Flow+2",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Lofree+Flow+2",
     "price": "$189",
     "startingVotes": 875
   },
@@ -205,6 +239,8 @@ export const products = [
     "description": "A design-led tech pick from Apple.",
     "image": "",
     "affiliateUrl": "https://www.apple.com/iphone/",
+    "amazonUrl": "https://www.amazon.com/s?k=Apple+iPhone+Air",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Apple+iPhone+Air",
     "price": "$999",
     "startingVotes": 868
   },
@@ -217,6 +253,8 @@ export const products = [
     "description": "A design-led tech pick from Nothing.",
     "image": "",
     "affiliateUrl": "https://nothing.tech/products/headphone-1",
+    "amazonUrl": "https://www.amazon.com/s?k=Nothing+Headphones+%281%29",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Nothing+Headphones+%281%29",
     "price": "$299",
     "startingVotes": 861
   },
@@ -229,6 +267,8 @@ export const products = [
     "description": "A design-led home pick from Kismas.",
     "image": "",
     "affiliateUrl": "https://kismas.co/products/doric-lamp-01",
+    "amazonUrl": "https://www.amazon.com/s?k=Kismas+Doric+Lamp+01",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Kismas+Doric+Lamp+01",
     "price": "$169",
     "startingVotes": 854
   },
@@ -241,6 +281,8 @@ export const products = [
     "description": "A design-led cameras pick from Leica.",
     "image": "",
     "affiliateUrl": "https://leica-camera.com/en-US/photography/cameras/q/q3-black",
+    "amazonUrl": "https://www.amazon.com/s?k=Leica+Leica+Q3",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Leica+Leica+Q3",
     "price": "$6,735",
     "startingVotes": 847
   },
@@ -253,6 +295,8 @@ export const products = [
     "description": "A design-led travel pick from Rimowa.",
     "image": "",
     "affiliateUrl": "https://www.rimowa.com/us/en/luggage/colour/silver/cabin/97353004.html",
+    "amazonUrl": "https://www.amazon.com/s?k=Rimowa+Classic+Cabin",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Rimowa+Classic+Cabin",
     "price": "$1,600",
     "startingVotes": 840
   },
@@ -265,6 +309,8 @@ export const products = [
     "description": "A design-led workspace pick from Humans Since 1982.",
     "image": "",
     "affiliateUrl": "https://www.humanssince1982.com/clockclock-24",
+    "amazonUrl": "https://www.amazon.com/s?k=Humans+Since+1982+ClockClock+24",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Humans+Since+1982+ClockClock+24",
     "price": "$8,500",
     "startingVotes": 833
   },
@@ -277,6 +323,8 @@ export const products = [
     "description": "A design-led home pick from CrushGrind.",
     "image": "",
     "affiliateUrl": "https://www.crushgrind.com/products/p-1-pepper-mill",
+    "amazonUrl": "https://www.amazon.com/s?k=CrushGrind+P%E2%80%931+Pepper+Mill",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=CrushGrind+P%E2%80%931+Pepper+Mill",
     "price": "$299",
     "startingVotes": 826
   },
@@ -289,6 +337,8 @@ export const products = [
     "description": "A design-led home pick from BằNG.",
     "image": "",
     "affiliateUrl": "https://www.bang-studio.com/",
+    "amazonUrl": "https://www.amazon.com/s?k=B%E1%BA%B1NG+L%E1%BB%9Bp+small+square+in+orange+acrylic",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=B%E1%BA%B1NG+L%E1%BB%9Bp+small+square+in+orange+acrylic",
     "price": "$195",
     "startingVotes": 819
   },
@@ -301,6 +351,8 @@ export const products = [
     "description": "A design-led home pick from Herman Miller.",
     "image": "",
     "affiliateUrl": "https://store.hermanmiller.com/living-room-furniture-side-tables/noguchi-table/100104469.html",
+    "amazonUrl": "https://www.amazon.com/s?k=Herman+Miller+Noguchi+Coffee+Table",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Herman+Miller+Noguchi+Coffee+Table",
     "price": "$2,745",
     "startingVotes": 812
   },
@@ -313,6 +365,8 @@ export const products = [
     "description": "A design-led watches pick from Breda.",
     "image": "",
     "affiliateUrl": "https://www.breda.com/products/pulse-tandem",
+    "amazonUrl": "https://www.amazon.com/s?k=Breda+Pulse+%28Tandem%29",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Breda+Pulse+%28Tandem%29",
     "price": "$230",
     "startingVotes": 805
   },
@@ -325,6 +379,8 @@ export const products = [
     "description": "A design-led tech pick from Nothing.",
     "image": "",
     "affiliateUrl": "https://nothing.tech/products/ear-3",
+    "amazonUrl": "https://www.amazon.com/s?k=Nothing+Ear+%283%29",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Nothing+Ear+%283%29",
     "price": "$149",
     "startingVotes": 798
   },
@@ -337,6 +393,8 @@ export const products = [
     "description": "A design-led tech pick from Aulumu.",
     "image": "",
     "affiliateUrl": "https://aulumu.com/products/m01-4-in-1-folding-wireless-charging-station-pad",
+    "amazonUrl": "https://www.amazon.com/s?k=Aulumu+M01+4-in-1+Folding+Wireless+Charging+Station+%26+Pad",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Aulumu+M01+4-in-1+Folding+Wireless+Charging+Station+%26+Pad",
     "price": "$109",
     "startingVotes": 791
   },
@@ -349,6 +407,8 @@ export const products = [
     "description": "A design-led coffee pick from La Marzocco.",
     "image": "",
     "affiliateUrl": "https://lamarzocco.com/us/en/home-products/espresso-machines/linea-micra/",
+    "amazonUrl": "https://www.amazon.com/s?k=La+Marzocco+Linea+Micra",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=La+Marzocco+Linea+Micra",
     "price": "$4,500",
     "startingVotes": 784
   },
@@ -361,6 +421,8 @@ export const products = [
     "description": "A design-led coffee pick from Subminimal.",
     "image": "",
     "affiliateUrl": "https://subminimal.com/products/subscale",
+    "amazonUrl": "https://www.amazon.com/s?k=Subminimal+Subscale",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Subminimal+Subscale",
     "price": "$50",
     "startingVotes": 777
   },
@@ -373,6 +435,8 @@ export const products = [
     "description": "A design-led tech pick from Sony.",
     "image": "",
     "affiliateUrl": "https://electronics.sony.com/audio/headphones/headband/p/wh1000xm6-b",
+    "amazonUrl": "https://www.amazon.com/s?k=Sony+WH-1000+XM6",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Sony+WH-1000+XM6",
     "price": "$400",
     "startingVotes": 770
   },
@@ -385,6 +449,8 @@ export const products = [
     "description": "A design-led lifestyle pick from Nintendo.",
     "image": "",
     "affiliateUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
+    "amazonUrl": "https://www.amazon.com/s?k=Nintendo+Switch+2",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Nintendo+Switch+2",
     "price": "$450",
     "startingVotes": 763
   },
@@ -397,6 +463,8 @@ export const products = [
     "description": "A design-led books pick from Phaidon.",
     "image": "",
     "affiliateUrl": "https://www.phaidon.com/store/design/the-design-book-9781838661433/",
+    "amazonUrl": "https://www.amazon.com/s?k=Phaidon+The+Design+Book",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Phaidon+The+Design+Book",
     "price": "$18",
     "startingVotes": 756
   },
@@ -409,6 +477,8 @@ export const products = [
     "description": "A design-led coffee pick from xBloom.",
     "image": "",
     "affiliateUrl": "https://xbloom.com/products/xbloom-studio",
+    "amazonUrl": "https://www.amazon.com/s?k=xBloom+xBloom+Studio+Coffee+Machine",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=xBloom+xBloom+Studio+Coffee+Machine",
     "price": "$599",
     "startingVotes": 749
   },
@@ -421,6 +491,8 @@ export const products = [
     "description": "A design-led tech pick from Apple.",
     "image": "",
     "affiliateUrl": "https://www.apple.com/iphone/",
+    "amazonUrl": "https://www.amazon.com/s?k=Apple+iPhone+17+Pro",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Apple+iPhone+17+Pro",
     "price": "$1,099",
     "startingVotes": 742
   },
@@ -433,6 +505,8 @@ export const products = [
     "description": "A design-led watches pick from Serica.",
     "image": "",
     "affiliateUrl": "https://www.serica-watches.com/en/product/1174-parade/",
+    "amazonUrl": "https://www.amazon.com/s?k=Serica+Ref.+1174-1+Parade",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Serica+Ref.+1174-1+Parade",
     "price": "$1,490",
     "startingVotes": 735
   },
@@ -445,6 +519,8 @@ export const products = [
     "description": "A design-led home pick from Ligne Roset.",
     "image": "",
     "affiliateUrl": "https://www.ligne-roset.com/us/modele/living/sofas/togo/2602",
+    "amazonUrl": "https://www.amazon.com/s?k=Ligne+Roset+Togo+%C2%AE+Loveseat",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Ligne+Roset+Togo+%C2%AE+Loveseat",
     "price": "$6,575",
     "startingVotes": 728
   },
@@ -457,6 +533,8 @@ export const products = [
     "description": "A design-led home pick from Dyson.",
     "image": "",
     "affiliateUrl": "https://www.dyson.com/lighting/floor-lamps/solarcycle-morph",
+    "amazonUrl": "https://www.amazon.com/s?k=Dyson+Solarcycle+Morph+Floor",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Dyson+Solarcycle+Morph+Floor",
     "price": "$849",
     "startingVotes": 721
   },
@@ -469,6 +547,8 @@ export const products = [
     "description": "A design-led home pick from Grau.",
     "image": "",
     "affiliateUrl": "https://www.grau.art/en/products/salt",
+    "amazonUrl": "https://www.amazon.com/s?k=Grau+Salt",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Grau+Salt",
     "price": "$503",
     "startingVotes": 714
   },
@@ -481,6 +561,8 @@ export const products = [
     "description": "A design-led tech pick from JBL.",
     "image": "",
     "affiliateUrl": "https://www.jbl.com/bluetooth-speakers/JBLFLIP6BLKAM.html",
+    "amazonUrl": "https://www.amazon.com/s?k=JBL+Flip+6+Portable+Bluetooth+Speaker",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=JBL+Flip+6+Portable+Bluetooth+Speaker",
     "price": "$130",
     "startingVotes": 707
   },
@@ -493,6 +575,8 @@ export const products = [
     "description": "A design-led home pick from Snow Peak.",
     "image": "",
     "affiliateUrl": "https://www.snowpeak.com/products/titanium-spork",
+    "amazonUrl": "https://www.amazon.com/s?k=Snow+Peak+Titanium+Spork",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Snow+Peak+Titanium+Spork",
     "price": "$10",
     "startingVotes": 700
   },
@@ -505,6 +589,8 @@ export const products = [
     "description": "A design-led books pick from Standards Manual.",
     "image": "",
     "affiliateUrl": "https://standardsmanual.com/products/parks",
+    "amazonUrl": "https://www.amazon.com/s?k=Standards+Manual+Parks%3A+United+States+National+Park+Service+Maps",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Standards+Manual+Parks%3A+United+States+National+Park+Service+Maps",
     "price": "$40",
     "startingVotes": 693
   },
@@ -517,6 +603,8 @@ export const products = [
     "description": "A design-led travel pick from Hoto.",
     "image": "",
     "affiliateUrl": "https://hototools.com/products/camplight-rechargeable-led-camping-lantern",
+    "amazonUrl": "https://www.amazon.com/s?k=Hoto+CampLight+Rechargeable+LED+Camping+Lantern",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Hoto+CampLight+Rechargeable+LED+Camping+Lantern",
     "price": "$60",
     "startingVotes": 686
   },
@@ -529,6 +617,8 @@ export const products = [
     "description": "A design-led travel pick from Anker.",
     "image": "",
     "affiliateUrl": "https://www.anker.com/products/a17b3",
+    "amazonUrl": "https://www.amazon.com/s?k=Anker+SOLIX+EverFrost+2+Electric+Cooler",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Anker+SOLIX+EverFrost+2+Electric+Cooler",
     "price": "$700",
     "startingVotes": 679
   },
@@ -541,6 +631,8 @@ export const products = [
     "description": "A design-led travel pick from Snow Peak.",
     "image": "",
     "affiliateUrl": "https://www.snowpeak.com/products/rechargeable-mini-hozuki",
+    "amazonUrl": "https://www.amazon.com/s?k=Snow+Peak+Rechargeable+Mini+Hozuki+Lantern",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Snow+Peak+Rechargeable+Mini+Hozuki+Lantern",
     "price": "$70",
     "startingVotes": 672
   },
@@ -553,6 +645,8 @@ export const products = [
     "description": "A design-led coffee pick from Wacaco.",
     "image": "",
     "affiliateUrl": "https://www.wacaco.com/products/minipresso-gr2",
+    "amazonUrl": "https://www.amazon.com/s?k=Wacaco+Minipresso+GR2+Espresso+Machine",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Wacaco+Minipresso+GR2+Espresso+Machine",
     "price": "$60",
     "startingVotes": 665
   },
@@ -565,6 +659,8 @@ export const products = [
     "description": "A design-led carry pick from Stelton.",
     "image": "",
     "affiliateUrl": "https://www.stelton.com/en/products/em77-vacuum-jug",
+    "amazonUrl": "https://www.amazon.com/s?k=Stelton+Vacuum+Jug",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Stelton+Vacuum+Jug",
     "price": "$120",
     "startingVotes": 658
   },
@@ -577,6 +673,8 @@ export const products = [
     "description": "A design-led lifestyle pick from Solo Stove.",
     "image": "",
     "affiliateUrl": "https://www.solostove.com/en-us/p/mesa",
+    "amazonUrl": "https://www.amazon.com/s?k=Solo+Stove+Mesa+Tabletop+Fire+Pit",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Solo+Stove+Mesa+Tabletop+Fire+Pit",
     "price": "$110",
     "startingVotes": 651
   },
@@ -589,6 +687,8 @@ export const products = [
     "description": "A design-led travel pick from Outask.",
     "image": "",
     "affiliateUrl": "https://outask-td.com/products/telescopic-lantern",
+    "amazonUrl": "https://www.amazon.com/s?k=Outask+Telescopic+Camping+Lantern",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Outask+Telescopic+Camping+Lantern",
     "price": "$150",
     "startingVotes": 644
   },
@@ -601,6 +701,8 @@ export const products = [
     "description": "A design-led home pick from Smeg.",
     "image": "",
     "affiliateUrl": "https://www.smeg.com/us/products/KLF03",
+    "amazonUrl": "https://www.amazon.com/s?k=Smeg+Electric+Kettle",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Smeg+Electric+Kettle",
     "price": "$275",
     "startingVotes": 637
   },
@@ -613,6 +715,8 @@ export const products = [
     "description": "A design-led home pick from Lego.",
     "image": "",
     "affiliateUrl": "https://www.lego.com/en-us/product/wildflower-bouquet-10313",
+    "amazonUrl": "https://www.amazon.com/s?k=Lego+Wildflower+Bouquet",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Lego+Wildflower+Bouquet",
     "price": "$60",
     "startingVotes": 630
   },
@@ -625,6 +729,8 @@ export const products = [
     "description": "A design-led home pick from Le Creuset.",
     "image": "",
     "affiliateUrl": "https://www.lecreuset.com/signature-round-dutch-oven/LS2501.html",
+    "amazonUrl": "https://www.amazon.com/s?k=Le+Creuset+Signature+Round+Dutch+Oven",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Le+Creuset+Signature+Round+Dutch+Oven",
     "price": "$420",
     "startingVotes": 623
   },
@@ -637,6 +743,8 @@ export const products = [
     "description": "A design-led personal pick from Gucci.",
     "image": "",
     "affiliateUrl": "https://www.gucci.com/us/en/pr/beauty/fragrances/fragrances-for-women/bloom-eau-de-parfum-100ml-p-488830999990099",
+    "amazonUrl": "https://www.amazon.com/s?k=Gucci+Bloom+Eau+De+Parfum",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Gucci+Bloom+Eau+De+Parfum",
     "price": "$60",
     "startingVotes": 616
   },
@@ -649,6 +757,8 @@ export const products = [
     "description": "A design-led personal pick from Aesop.",
     "image": "",
     "affiliateUrl": "https://www.aesop.com/us/p/fragrance/floral/rozu-eau-de-parfum/",
+    "amazonUrl": "https://www.amazon.com/s?k=Aesop+R%C5%8Dzu+Eau+De+Parfum",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Aesop+R%C5%8Dzu+Eau+De+Parfum",
     "price": "$200",
     "startingVotes": 609
   },
@@ -661,6 +771,8 @@ export const products = [
     "description": "A design-led books pick from Assouline.",
     "image": "",
     "affiliateUrl": "https://www.assouline.com/products/mother-and-child",
+    "amazonUrl": "https://www.amazon.com/s?k=Assouline+Mother+And+Child+Coffee+Table+Book",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Assouline+Mother+And+Child+Coffee+Table+Book",
     "price": "$120",
     "startingVotes": 602
   },
@@ -673,6 +785,8 @@ export const products = [
     "description": "A design-led books pick from Phaidon.",
     "image": "",
     "affiliateUrl": "https://www.phaidon.com/store/design/woman-made-great-women-designers-9781838662850/",
+    "amazonUrl": "https://www.amazon.com/s?k=Phaidon+Woman+Made%3A+Great+Women+Designers",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Phaidon+Woman+Made%3A+Great+Women+Designers",
     "price": "$60",
     "startingVotes": 595
   },
@@ -685,6 +799,8 @@ export const products = [
     "description": "A design-led home pick from Hatch.",
     "image": "",
     "affiliateUrl": "https://www.hatch.co/restore",
+    "amazonUrl": "https://www.amazon.com/s?k=Hatch+Restore+3+Sunrise+Alarm+Clock",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Hatch+Restore+3+Sunrise+Alarm+Clock",
     "price": "$170",
     "startingVotes": 588
   },
@@ -697,6 +813,8 @@ export const products = [
     "description": "A design-led lifestyle pick from Stakt.",
     "image": "",
     "affiliateUrl": "https://staktmat.com/products/the-stakt-mat",
+    "amazonUrl": "https://www.amazon.com/s?k=Stakt+Original+Foldable+Yoga+Mat",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Stakt+Original+Foldable+Yoga+Mat",
     "price": "$90",
     "startingVotes": 581
   },
@@ -709,6 +827,8 @@ export const products = [
     "description": "A design-led carry pick from Gucci.",
     "image": "",
     "affiliateUrl": "https://www.gucci.com/us/en/pr/women/handbags/tote-bags-for-women/mercato-tote-bag-p-815452AAC7L1060",
+    "amazonUrl": "https://www.amazon.com/s?k=Gucci+Mercato+Tote+Bag",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Gucci+Mercato+Tote+Bag",
     "price": "$3,600",
     "startingVotes": 574
   },
@@ -721,6 +841,8 @@ export const products = [
     "description": "A design-led personal pick from Kate McLeod.",
     "image": "",
     "affiliateUrl": "https://www.katemcleod.com/products/sleep-stone",
+    "amazonUrl": "https://www.amazon.com/s?k=Kate+McLeod+Sleep+Stone+Solid+Body+Moisturizer+Starter+Kit",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Kate+McLeod+Sleep+Stone+Solid+Body+Moisturizer+Starter+Kit",
     "price": "$45",
     "startingVotes": 567
   },
@@ -733,6 +855,8 @@ export const products = [
     "description": "A design-led home pick from Diptyque.",
     "image": "",
     "affiliateUrl": "https://www.diptyqueparis.com/en_us/p/baies-berries-candle.html",
+    "amazonUrl": "https://www.amazon.com/s?k=Diptyque+Baies+Scented+Candle",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Diptyque+Baies+Scented+Candle",
     "price": "$70",
     "startingVotes": 560
   },
@@ -745,6 +869,8 @@ export const products = [
     "description": "A design-led carry pick from Spigen.",
     "image": "",
     "affiliateUrl": "https://www.spigen.com/products/iphone-classic-ls-magfit-case",
+    "amazonUrl": "https://www.amazon.com/s?k=Spigen+Classic+LS+MagFit+Case",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Spigen+Classic+LS+MagFit+Case",
     "price": "$35",
     "startingVotes": 553
   },
@@ -757,6 +883,8 @@ export const products = [
     "description": "A design-led workspace pick from Wokyis.",
     "image": "",
     "affiliateUrl": "https://wokyis.com/products/retro-docking-station-for-mac-mini",
+    "amazonUrl": "https://www.amazon.com/s?k=Wokyis+Retro+Docking+Station+For+Mac+Mini",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Wokyis+Retro+Docking+Station+For+Mac+Mini",
     "price": "$170",
     "startingVotes": 546
   },
@@ -769,6 +897,8 @@ export const products = [
     "description": "A design-led watches pick from Spigen.",
     "image": "",
     "affiliateUrl": "https://www.spigen.com/products/apple-watch-classic-c1-stand",
+    "amazonUrl": "https://www.amazon.com/s?k=Spigen+Classic+C1+Apple+Watch+Charger+Stand",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Spigen+Classic+C1+Apple+Watch+Charger+Stand",
     "price": "$20",
     "startingVotes": 539
   },
@@ -781,6 +911,8 @@ export const products = [
     "description": "A design-led tech pick from 8BitDo.",
     "image": "",
     "affiliateUrl": "https://www.8bitdo.com/retro-mechanical-keyboard/",
+    "amazonUrl": "https://www.amazon.com/s?k=8BitDo+Retro+Mechanical+Keyboard",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=8BitDo+Retro+Mechanical+Keyboard",
     "price": "$90",
     "startingVotes": 532
   },
@@ -793,6 +925,8 @@ export const products = [
     "description": "A design-led tech pick from 8BitDo.",
     "image": "",
     "affiliateUrl": "https://www.8bitdo.com/retro-r8-mouse/",
+    "amazonUrl": "https://www.amazon.com/s?k=8BitDo+Retro+R8+Mouse",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=8BitDo+Retro+R8+Mouse",
     "price": "$50",
     "startingVotes": 525
   },
@@ -805,6 +939,8 @@ export const products = [
     "description": "A design-led carry pick from Spigen.",
     "image": "",
     "affiliateUrl": "https://www.spigen.com/products/iphone-classic-c1-magfit-case",
+    "amazonUrl": "https://www.amazon.com/s?k=Spigen+Classic+C1+MagFit+Case",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Spigen+Classic+C1+MagFit+Case",
     "price": "$35",
     "startingVotes": 518
   },
@@ -817,6 +953,8 @@ export const products = [
     "description": "A design-led carry pick from Spigen.",
     "image": "",
     "affiliateUrl": "https://www.spigen.com/products/airpods-pro-classic-ls-case",
+    "amazonUrl": "https://www.amazon.com/s?k=Spigen+Classic+LS+AirPods+Pro+3+Case",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Spigen+Classic+LS+AirPods+Pro+3+Case",
     "price": "$45",
     "startingVotes": 511
   },
@@ -829,6 +967,8 @@ export const products = [
     "description": "A design-led tech pick from Native Union.",
     "image": "",
     "affiliateUrl": "https://www.nativeunion.com/products/pop-phone",
+    "amazonUrl": "https://www.amazon.com/s?k=Native+Union+Pop+Phone",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Native+Union+Pop+Phone",
     "price": "$40",
     "startingVotes": 504
   },
@@ -841,6 +981,8 @@ export const products = [
     "description": "A design-led home pick from ForeverSpin.",
     "image": "",
     "affiliateUrl": "https://foreverspin.com/products/stainless-steel-spinning-top",
+    "amazonUrl": "https://www.amazon.com/s?k=ForeverSpin+Stainless+Steel+Spinning+Top",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=ForeverSpin+Stainless+Steel+Spinning+Top",
     "price": "$47",
     "startingVotes": 497
   },
@@ -853,6 +995,8 @@ export const products = [
     "description": "A design-led home pick from Lego.",
     "image": "",
     "affiliateUrl": "https://www.lego.com/en-us/search?q=Ferrari%20F40",
+    "amazonUrl": "https://www.amazon.com/s?k=Lego+Ferrari+F40+10248",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Lego+Ferrari+F40+10248",
     "price": "$25",
     "startingVotes": 490
   },
@@ -865,6 +1009,8 @@ export const products = [
     "description": "A design-led lifestyle pick from Printworks.",
     "image": "",
     "affiliateUrl": "https://printworksmarket.com/products/art-of-chess",
+    "amazonUrl": "https://www.amazon.com/s?k=Printworks+Art+of+Chess+Set",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Printworks+Art+of+Chess+Set",
     "price": "$60",
     "startingVotes": 483
   },
@@ -877,6 +1023,8 @@ export const products = [
     "description": "A design-led lifestyle pick from The Serious Toy Company.",
     "image": "",
     "affiliateUrl": "https://theserioustoycompany.com/",
+    "amazonUrl": "https://www.amazon.com/s?k=The+Serious+Toy+Company+Tyrannosaurus",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=The+Serious+Toy+Company+Tyrannosaurus",
     "price": "$60",
     "startingVotes": 476
   },
@@ -889,6 +1037,8 @@ export const products = [
     "description": "A design-led home pick from Lego.",
     "image": "",
     "affiliateUrl": "https://www.lego.com/en-us/product/fifa-world-cup-official-trophy-43020",
+    "amazonUrl": "https://www.amazon.com/s?k=Lego+FIFA+World+Cup+Official+Trophy",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Lego+FIFA+World+Cup+Official+Trophy",
     "price": "$200",
     "startingVotes": 469
   },
@@ -901,6 +1051,8 @@ export const products = [
     "description": "A design-led lifestyle pick from Lego.",
     "image": "",
     "affiliateUrl": "https://www.lego.com/en-us/product/game-boy-72046",
+    "amazonUrl": "https://www.amazon.com/s?k=Lego+Game+Boy%E2%84%A2+72046",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Lego+Game+Boy%E2%84%A2+72046",
     "price": "$60",
     "startingVotes": 462
   },
@@ -913,6 +1065,8 @@ export const products = [
     "description": "A design-led lifestyle pick from Cards Against Humanity.",
     "image": "",
     "affiliateUrl": "https://www.cardsagainsthumanity.com/products/cards-against-humanity-international-edition",
+    "amazonUrl": "https://www.amazon.com/s?k=Cards+Against+Humanity+International+Edition",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Cards+Against+Humanity+International+Edition",
     "price": "$30",
     "startingVotes": 455
   },
@@ -925,6 +1079,8 @@ export const products = [
     "description": "A design-led lifestyle pick from Theory 11.",
     "image": "",
     "affiliateUrl": "https://store.theory11.com/products/artisan",
+    "amazonUrl": "https://www.amazon.com/s?k=Theory+11+Artisan+Playing+Cards",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Theory+11+Artisan+Playing+Cards",
     "price": "$20",
     "startingVotes": 448
   },
@@ -937,6 +1093,8 @@ export const products = [
     "description": "A design-led home pick from Lego.",
     "image": "",
     "affiliateUrl": "https://www.lego.com/en-us/product/land-rover-classic-defender-90-10317",
+    "amazonUrl": "https://www.amazon.com/s?k=Lego+Icons+Land+Rover+Classic+Defender+90",
+    "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Lego+Icons+Land+Rover+Classic+Defender+90",
     "price": "$240",
     "startingVotes": 441
   }

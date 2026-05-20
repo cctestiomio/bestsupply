@@ -195,7 +195,7 @@ h1 {
   min-height: 260px;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, #fbfaf7 0%, #eee9df 100%);
+  background: #f7f5ef;
 }
 
 .product-image img {
@@ -211,7 +211,8 @@ h1 {
 
 .product-card:hover img { transform: scale(1.025); }
 
-.image-placeholder {
+.image-placeholder,
+.image-unavailable {
   width: min(76%, 340px);
   min-height: 170px;
   border: 1px dashed #cfc7b8;
@@ -226,7 +227,8 @@ h1 {
   color: #5d584f;
 }
 
-.image-placeholder span {
+.image-placeholder span,
+.image-unavailable span {
   position: static !important;
   border: 0 !important;
   background: transparent !important;
@@ -237,14 +239,16 @@ h1 {
   color: #827b6d;
 }
 
-.image-placeholder strong {
+.image-placeholder strong,
+.image-unavailable strong {
   color: #171717;
   font-size: 24px;
   line-height: 1.05;
   letter-spacing: -0.05em;
 }
 
-.image-placeholder small {
+.image-placeholder small,
+.image-unavailable small {
   color: #827b6d;
   line-height: 1.35;
 }
