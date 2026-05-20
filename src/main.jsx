@@ -7,9 +7,13 @@ import "./styles.css";
 
 const categories = ["All", ...Array.from(new Set(productData.map((product) => product.category)))];
 
+function productKey(productId) {
+  return String(productId);
+}
+
 function startingVoteMap() {
   return productData.reduce((acc, product) => {
-    acc[product.id] = product.startingVotes || 0;
+    acc[productKey(product.id)] = product.startingVotes || 0;
     return acc;
   }, {});
 }
@@ -26,7 +30,10 @@ function getOrCreateVoterId() {
 
 function App() {
   const [votes, setVotes] = useState(startingVoteMap);
-  const [votedIds, setVotedIds] = useState(() => JSON.parse(localStorage.getItem("best-supply-voted-ids") || "[]"));
+  const [votedIds, setVotedIds] = useState(() => {
+    const saved = JSON.parse(localStorage.getItem("best-supply-voted-ids") || "[]");
+    return saved.map(String);
+  });
   const [category, setCategory] = useState("All");
   const [sort, setSort] = useState("top");
   const [query, setQuery] = useState("");
@@ -57,10 +64,10 @@ function App() {
 
       const nextVotes = { ...startingVotes };
       for (const row of countsResult.data || []) {
-        nextVotes[row.product_id] = (startingVotes[row.product_id] || 0) + Number(row.votes || 0);
+        nextVotes[productKey(row.product_id)] = (startingVotes[productKey(row.product_id)] || 0) + Number(row.votes || 0);
       }
 
-      const alreadyVoted = (voterResult.data || []).map((row) => row.product_id);
+      const alreadyVoted = (voterResult.data || []).map((row) => productKey(row.product_id));
       setVotes(nextVotes);
       setVotedIds(alreadyVoted);
       localStorage.setItem("best-supply-voted-ids", JSON.stringify(alreadyVoted));
@@ -85,7 +92,7 @@ function App() {
       return matchesCategory && matchesQuery;
     });
 
-    if (sort === "top") list.sort((a, b) => (votes[b.id] || 0) - (votes[a.id] || 0));
+    if (sort === "top") list.sort((a, b) => (votes[productKey(b.id)] || 0) - (votes[productKey(a.id)] || 0));
     if (sort === "new") list.sort((a, b) => productData.indexOf(b) - productData.indexOf(a));
     if (sort === "az") list.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -93,24 +100,25 @@ function App() {
   }, [category, query, sort, votes]);
 
   async function vote(productId) {
+    const id = productKey(productId);
     if (!isSupabaseConfigured) {
       setVoteError("Supabase is not configured yet, so this vote cannot be saved globally.");
       return;
     }
 
-    if (votedIds.includes(productId)) return;
+    if (votedIds.includes(id)) return;
 
     const voterId = getOrCreateVoterId();
     const previousVotes = votes;
     const previousVotedIds = votedIds;
-    const nextVotedIds = [...votedIds, productId];
+    const nextVotedIds = [...votedIds, id];
 
-    setVotes({ ...votes, [productId]: (votes[productId] || 0) + 1 });
+    setVotes({ ...votes, [id]: (votes[id] || 0) + 1 });
     setVotedIds(nextVotedIds);
     localStorage.setItem("best-supply-voted-ids", JSON.stringify(nextVotedIds));
     setVoteError("");
 
-    const { error } = await supabase.from("product_votes").insert({ product_id: productId, voter_id: voterId });
+    const { error } = await supabase.from("product_votes").insert({ product_id: id, voter_id: voterId });
 
     if (error) {
       setVotes(previousVotes);
@@ -120,7 +128,7 @@ function App() {
       if (error.code === "23505") {
         setVoteError("You already voted for that product from this browser.");
       } else {
-        setVoteError("Vote failed. Check your Supabase policies and network connection.");
+        setVoteError(`Vote failed: ${error.message || "Check your Supabase policies and network connection."}`);
       }
     }
   }
@@ -182,7 +190,8 @@ function App() {
 
       <section className="product-grid">
         {filteredProducts.map((product) => {
-          const hasVoted = votedIds.includes(product.id);
+          const id = productKey(product.id);
+          const hasVoted = votedIds.includes(id);
 
           return (
             <article className="product-card" key={product.id}>
@@ -200,7 +209,7 @@ function App() {
                 <div className="card-actions">
                   <button className={hasVoted ? "vote-button voted" : "vote-button"} onClick={() => vote(product.id)} disabled={hasVoted || isLoadingVotes}>
                     <ArrowUp size={16} />
-                    <span>{isLoadingVotes ? "..." : votes[product.id] || 0}</span>
+                    <span>{isLoadingVotes ? "..." : votes[id] || 0}</span>
                   </button>
                   <a className="buy-button" href={product.affiliateUrl} target="_blank" rel="noreferrer sponsored noopener">
                     Buy <ExternalLink size={15} />

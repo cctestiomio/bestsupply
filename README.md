@@ -122,3 +122,8 @@ Good next upgrades:
 - Vote audit table with IP hash / user agent hash
 - Daily rate limits
 - Product pages with comments and reviews
+
+
+## Troubleshooting vote insert errors
+
+This patched build stores `product_id` and `voter_id` as text strings before inserting into Supabase. If voting fails, open the browser console to see the exact Supabase error shown in the site notice. Re-run `supabase/schema.sql` after replacing the database schema.
