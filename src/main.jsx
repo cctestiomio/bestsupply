@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { ArrowUp, ExternalLink, Search, ShieldCheck, SlidersHorizontal, WifiOff } from "lucide-react";
+import { ArrowUp, ExternalLink, Search, SlidersHorizontal, WifiOff } from "lucide-react";
 import { products as productData } from "./products";
 import { isSupabaseConfigured, supabase } from "./supabase";
 import "./styles.css";
@@ -140,7 +140,7 @@ function App() {
           <a className="logo" href="/" aria-label="Best Supply home">Best Supply</a>
           <nav>
             <a href="#products">Products</a>
-            <a href="#submit">Submit</a>
+            
             <a href="#about">About</a>
           </nav>
         </div>
@@ -153,7 +153,7 @@ function App() {
           </p>
           <div className="hero-actions">
             <a className="primary-link" href="#products">Browse products</a>
-            <a className="secondary-link" href="#submit">Suggest a product</a>
+            
           </div>
         </section>
       </header>
@@ -219,19 +219,6 @@ function App() {
             </article>
           );
         })}
-      </section>
-
-      <section className="info-grid" id="submit">
-        <div className="info-card">
-          <ShieldCheck size={22} />
-          <h3>Affiliate-ready</h3>
-          <p>Edit <code>src/products.js</code> and replace each <code>affiliateUrl</code> with your own tracking link.</p>
-        </div>
-        <div className="info-card" id="about">
-          <ShieldCheck size={22} />
-          <h3>Global voting</h3>
-          <p>Votes are saved to Supabase and counted publicly across all visitors. Each browser gets one vote per product.</p>
-        </div>
       </section>
 
       <footer>

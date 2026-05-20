@@ -19,10 +19,10 @@ main {
 }
 
 .site-header {
-  min-height: 54vh;
+  min-height: auto;
   border: 1px solid #dedbd2;
   border-radius: 32px;
-  padding: 22px;
+  padding: 18px 22px;
   background: linear-gradient(145deg, #ffffff 0%, #f4f0e7 100%);
 }
 
@@ -50,7 +50,7 @@ nav a:hover { color: #171717; }
 
 .hero {
   max-width: 880px;
-  padding: 112px 12px 54px;
+  padding: 54px 12px 34px;
 }
 
 .eyebrow {
@@ -62,7 +62,7 @@ nav a:hover { color: #171717; }
 }
 
 h1 {
-  font-size: clamp(48px, 9vw, 112px);
+  font-size: clamp(42px, 7vw, 82px);
   line-height: 0.9;
   letter-spacing: -0.075em;
   margin: 0;
@@ -74,14 +74,14 @@ h1 {
   color: #5d584f;
   font-size: 18px;
   line-height: 1.6;
-  margin: 26px 0 0;
+  margin: 18px 0 0;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .primary-link, .secondary-link, .buy-button, .vote-button, .category-row button, .select-box {
@@ -288,7 +288,7 @@ h2 {
 .info-card {
   border: 1px solid #dedbd2;
   border-radius: 28px;
-  padding: 22px;
+  padding: 18px 22px;
   background: #fffdf8;
 }
 
@@ -328,7 +328,7 @@ footer {
   .site-header { border-radius: 22px; }
   .brand-row { align-items: flex-start; }
   nav { display: none; }
-  .hero { padding: 80px 4px 34px; }
+  .hero { padding: 44px 4px 28px; }
   .controls, .product-grid, .info-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; }
 }
