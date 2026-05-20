@@ -38,17 +38,39 @@ function productPath(product) {
   return `#product/${encodeURIComponent(product.id)}`;
 }
 
+function isSearchPageUrl(source) {
+  try {
+    const url = new URL(source);
+    const host = url.hostname.toLowerCase();
+    const path = url.pathname.toLowerCase();
+
+    const isAmazonSearch = host.includes("amazon.") && (url.searchParams.has("k") || path === "/s");
+    const isEbaySearch = host.includes("ebay.") && path.includes("/sch/i.html");
+    const isGenericSearch = url.searchParams.has("q") && !path.includes("/product") && !path.includes("/products");
+
+    return isAmazonSearch || isEbaySearch || isGenericSearch;
+  } catch {
+    return true;
+  }
+}
+
 function getProductImageSources(product) {
+  // Only use exact product/detail pages or direct image URLs.
+  // Amazon/eBay search result pages caused generic stock/placeholder images, so they are skipped.
   return [product.image, product.affiliateUrl, product.amazonUrl, product.ebayUrl]
     .filter(Boolean)
     .map((source) => String(source).trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter((source) => !isSearchPageUrl(source));
 }
 
 function imageResolverUrl(source, product) {
   const params = new URLSearchParams({
     url: source,
     name: `${product.brand} ${product.name}`,
+    productId: product.id,
+    // cache buster so old Vercel edge-cache results from search-page fallbacks do not survive deploys
+    v: "5",
   });
 
   return `/api/product-image?${params.toString()}`;
@@ -85,10 +107,7 @@ function ProductImage({ product, large = false }) {
           onError={handleImageError}
         />
       ) : (
-        <div className="image-unavailable" aria-label={`${product.name} image unavailable`}>
-          <span>{product.brand}</span>
-          <strong>{product.name}</strong>
-        </div>
+        <div className="image-unavailable image-empty" aria-label={`${product.name} image unavailable`} />
       )}
     </div>
   );
@@ -358,7 +377,7 @@ function ProductDetail({ product, votes, votedIds, isLoadingVotes, vote }) {
       <section className="detail-about">
         <h2>About</h2>
         <p>{product.about || `${product.name} by ${product.brand} is listed as a community pick in ${product.category}. Add a richer product write-up in products.js when you publish your final affiliate page.`}</p>
-        <p className="image-note">Images are loaded from the official product page first, then Amazon, then eBay. For best reliability, replace fallback URLs in products.js with exact affiliate product-page URLs.</p>
+        <p className="image-note">Images are resolved from exact product/detail pages only. Search-result pages are ignored because they can return generic stock images. For best reliability, paste approved merchant, affiliate-feed, or official image URLs in products.js.</p>
       </section>
 
       {related.length > 0 && (

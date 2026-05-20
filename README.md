@@ -138,3 +138,16 @@ Product cards now load images in this order:
 4. `ebayUrl` fallback
 
 The Vercel function at `api/product-image.js` reads the page metadata and redirects to the product image, so you are not copying Curated Supply images or rehosting them. For best results, replace the generated Amazon/eBay search URLs in `src/products.js` with exact affiliate product-page URLs.
+
+
+## Product images
+
+This version does **not** use copied Curated Supply images and does **not** use Amazon/eBay search-result pages as image fallbacks. Search pages often return generic SEO, banner, or stock images that are unrelated to the actual product.
+
+Image loading now works like this:
+
+1. `image` — best option. Paste an approved direct image URL from your affiliate feed, merchant assets, Cloudinary, Supabase Storage, S3, etc.
+2. `affiliateUrl` — exact official product/detail page. The Vercel API attempts to read JSON-LD or Open Graph product image metadata.
+3. `amazonUrl` / `ebayUrl` — only use exact product listing URLs, not search URLs. Search URLs are skipped automatically.
+
+If no approved image metadata exists, the site shows a neutral empty image area instead of a fake/stock placeholder.
