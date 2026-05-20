@@ -1,6 +1,6 @@
 // Product catalog for Best Supply.
 // Replace affiliateUrl values with your own affiliate links before deploying.
-// price is optional; the current UI does not require it, but it is useful for future cards/admin views.
+// price is shown beside the Buy button. Replace affiliateUrl values with your own affiliate links.
 
 export const products = [
   {
@@ -10,7 +10,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Apple.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/studio%20display.webp",
     "affiliateUrl": "https://www.apple.com/shop/buy-mac/apple-studio-display",
     "price": "$1,599",
     "startingVotes": 980
@@ -22,7 +22,7 @@ export const products = [
     "category": "Carry",
     "tag": "Curated pick",
     "description": "A design-led carry pick from Grams28.",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Grams28_151%20Stealth%20Backpack.webp",
     "affiliateUrl": "https://www.grams28.com/products/151-stealth-backpack",
     "price": "$889",
     "startingVotes": 973
@@ -34,7 +34,7 @@ export const products = [
     "category": "Workspace",
     "tag": "Curated pick",
     "description": "A design-led workspace pick from Herman Miller.",
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/aeron.webp",
     "affiliateUrl": "https://store.hermanmiller.com/office-chairs-aeron/aeron-chair/2195348.html",
     "price": "$1,930",
     "startingVotes": 966
@@ -46,7 +46,7 @@ export const products = [
     "category": "Coffee",
     "tag": "Curated pick",
     "description": "A design-led coffee pick from Fellow.",
-    "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/fellow_stagg.webp",
     "affiliateUrl": "https://fellowproducts.com/products/stagg-ekg-electric-kettle",
     "price": "$200",
     "startingVotes": 959
@@ -58,7 +58,7 @@ export const products = [
     "category": "Vehicles",
     "tag": "Curated pick",
     "description": "A design-led vehicles pick from Porsche.",
-    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/911.webp",
     "affiliateUrl": "https://www.porsche.com/usa/models/911/911-turbo-models/911-turbo-s/",
     "price": "$270,000",
     "startingVotes": 952
@@ -70,7 +70,7 @@ export const products = [
     "category": "Watches",
     "tag": "Curated pick",
     "description": "A design-led watches pick from Omega.",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Omega_Speedmaster.webp",
     "affiliateUrl": "https://www.omegawatches.com/en-us/watches/speedmaster",
     "price": "$7,800",
     "startingVotes": 945
@@ -82,7 +82,7 @@ export const products = [
     "category": "Books",
     "tag": "Curated pick",
     "description": "A design-led books pick from Phaidon.",
-    "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Phaidon_Dieter%20Rams_%20The%20Complete%20Works.webp",
     "affiliateUrl": "https://www.phaidon.com/store/design/dieter-rams-the-complete-works-9781838669095/",
     "price": "$59",
     "startingVotes": 938
@@ -94,7 +94,7 @@ export const products = [
     "category": "Books",
     "tag": "Curated pick",
     "description": "A design-led books pick from Taschen.",
-    "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Taschen_Virgil%20Abloh.%20Nike.%20ICONS.webp",
     "affiliateUrl": "https://www.taschen.com/en/books/fashion/04687/virgil-abloh-nike-icons/",
     "price": "$59",
     "startingVotes": 931
@@ -106,7 +106,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Lego.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lego_icons10295porsche911.webp",
     "affiliateUrl": "https://www.lego.com/en-us/product/porsche-911-10295",
     "price": "$170",
     "startingVotes": 924
@@ -118,7 +118,7 @@ export const products = [
     "category": "Workspace",
     "tag": "Curated pick",
     "description": "A design-led workspace pick from Work Louder.",
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/worklouder_knob1.webp",
     "affiliateUrl": "https://worklouder.cc/products/knob-1",
     "price": "$439",
     "startingVotes": 917
@@ -130,7 +130,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Nothing.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/nothing_phone%284a%29pro.webp",
     "affiliateUrl": "https://nothing.tech/products/phone-3a-pro",
     "price": "$500",
     "startingVotes": 910
@@ -142,7 +142,7 @@ export const products = [
     "category": "Cameras",
     "tag": "Curated pick",
     "description": "A design-led cameras pick from Sigma.",
-    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/sigma_bf.webp",
     "affiliateUrl": "https://www.sigmaphoto.com/cameras/bf-camera",
     "price": "$2,199",
     "startingVotes": 903
@@ -154,7 +154,7 @@ export const products = [
     "category": "Watches",
     "tag": "Curated pick",
     "description": "A design-led watches pick from Rolex.",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/rolex_datejust.webp",
     "affiliateUrl": "https://www.rolex.com/watches/datejust",
     "price": "$10,000",
     "startingVotes": 896
@@ -166,7 +166,7 @@ export const products = [
     "category": "Carry",
     "tag": "Curated pick",
     "description": "A design-led carry pick from Goyard.",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/goyard_saintflorentinwallet.webp",
     "affiliateUrl": "https://www.goyard.com/us_en/portefeuille-saint-florentin.html",
     "price": "$1,500",
     "startingVotes": 889
@@ -178,7 +178,7 @@ export const products = [
     "category": "Workspace",
     "tag": "Curated pick",
     "description": "A design-led workspace pick from Nomad.",
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Nomad_%20Base%20One%20Max%203-in-1.webp",
     "affiliateUrl": "https://nomadgoods.com/products/base-one-max-3-in-1",
     "price": "$149",
     "startingVotes": 882
@@ -190,7 +190,7 @@ export const products = [
     "category": "Workspace",
     "tag": "Curated pick",
     "description": "A design-led workspace pick from Lofree.",
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Lofree_%20Flow%202.webp",
     "affiliateUrl": "https://www.lofree.co/products/flow-2",
     "price": "$189",
     "startingVotes": 875
@@ -202,7 +202,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Apple.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Apple_iPhone%20Air.webp",
     "affiliateUrl": "https://www.apple.com/iphone/",
     "price": "$999",
     "startingVotes": 868
@@ -214,7 +214,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Nothing.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Nothing_Headphones%281%29.webp",
     "affiliateUrl": "https://nothing.tech/products/headphone-1",
     "price": "$299",
     "startingVotes": 861
@@ -226,7 +226,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Kismas.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/kismas_doriclamp01.webp",
     "affiliateUrl": "https://kismas.co/products/doric-lamp-01",
     "price": "$169",
     "startingVotes": 854
@@ -238,7 +238,7 @@ export const products = [
     "category": "Cameras",
     "tag": "Curated pick",
     "description": "A design-led cameras pick from Leica.",
-    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Leica%20Q3.webp",
     "affiliateUrl": "https://leica-camera.com/en-US/photography/cameras/q/q3-black",
     "price": "$6,735",
     "startingVotes": 847
@@ -250,7 +250,7 @@ export const products = [
     "category": "Travel",
     "tag": "Curated pick",
     "description": "A design-led travel pick from Rimowa.",
-    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Rimowa_Classic%20Cabin.webp",
     "affiliateUrl": "https://www.rimowa.com/us/en/luggage/colour/silver/cabin/97353004.html",
     "price": "$1,600",
     "startingVotes": 840
@@ -262,7 +262,7 @@ export const products = [
     "category": "Workspace",
     "tag": "Curated pick",
     "description": "A design-led workspace pick from Humans Since 1982.",
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/humanssince1982_clockclock24.webp",
     "affiliateUrl": "https://www.humanssince1982.com/clockclock-24",
     "price": "$8,500",
     "startingVotes": 833
@@ -274,7 +274,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from CrushGrind.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Crust_P%E2%80%931%20Pepper%20Mill.webp",
     "affiliateUrl": "https://www.crushgrind.com/products/p-1-pepper-mill",
     "price": "$299",
     "startingVotes": 826
@@ -286,7 +286,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from BằNG.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Bang_Lo%CC%9B%CC%81p%20small%20square%20in%20orange%20acrylic%20CE.webp",
     "affiliateUrl": "https://www.bang-studio.com/",
     "price": "$195",
     "startingVotes": 819
@@ -298,7 +298,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Herman Miller.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/hermanmiller_noguchicoffeetable.webp",
     "affiliateUrl": "https://store.hermanmiller.com/living-room-furniture-side-tables/noguchi-table/100104469.html",
     "price": "$2,745",
     "startingVotes": 812
@@ -310,7 +310,7 @@ export const products = [
     "category": "Watches",
     "tag": "Curated pick",
     "description": "A design-led watches pick from Breda.",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Breda_Pulse%20%28Tandem%29.webp",
     "affiliateUrl": "https://www.breda.com/products/pulse-tandem",
     "price": "$230",
     "startingVotes": 805
@@ -322,7 +322,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Nothing.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/nothing_ear3.webp",
     "affiliateUrl": "https://nothing.tech/products/ear-3",
     "price": "$149",
     "startingVotes": 798
@@ -334,7 +334,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Aulumu.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/aulumu_m01.webp",
     "affiliateUrl": "https://aulumu.com/products/m01-4-in-1-folding-wireless-charging-station-pad",
     "price": "$109",
     "startingVotes": 791
@@ -346,7 +346,7 @@ export const products = [
     "category": "Coffee",
     "tag": "Curated pick",
     "description": "A design-led coffee pick from La Marzocco.",
-    "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lamarzocco_lineamicra.webp",
     "affiliateUrl": "https://lamarzocco.com/us/en/home-products/espresso-machines/linea-micra/",
     "price": "$4,500",
     "startingVotes": 784
@@ -358,7 +358,7 @@ export const products = [
     "category": "Coffee",
     "tag": "Curated pick",
     "description": "A design-led coffee pick from Subminimal.",
-    "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Subminimal_Subscale.webp",
     "affiliateUrl": "https://subminimal.com/products/subscale",
     "price": "$50",
     "startingVotes": 777
@@ -370,7 +370,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Sony.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/sony_wh1000xm6.webp",
     "affiliateUrl": "https://electronics.sony.com/audio/headphones/headband/p/wh1000xm6-b",
     "price": "$400",
     "startingVotes": 770
@@ -382,7 +382,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from Nintendo.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/nintendo_switch2.webp",
     "affiliateUrl": "https://www.nintendo.com/us/gaming-systems/switch-2/",
     "price": "$450",
     "startingVotes": 763
@@ -394,7 +394,7 @@ export const products = [
     "category": "Books",
     "tag": "Curated pick",
     "description": "A design-led books pick from Phaidon.",
-    "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Phaidon_The%20Design%20Book.webp",
     "affiliateUrl": "https://www.phaidon.com/store/design/the-design-book-9781838661433/",
     "price": "$18",
     "startingVotes": 756
@@ -406,7 +406,7 @@ export const products = [
     "category": "Coffee",
     "tag": "Curated pick",
     "description": "A design-led coffee pick from xBloom.",
-    "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/xbloomstudio.webp",
     "affiliateUrl": "https://xbloom.com/products/xbloom-studio",
     "price": "$599",
     "startingVotes": 749
@@ -418,7 +418,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Apple.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Apple_iPhone%20Pro%2017.webp",
     "affiliateUrl": "https://www.apple.com/iphone/",
     "price": "$1,099",
     "startingVotes": 742
@@ -430,7 +430,7 @@ export const products = [
     "category": "Watches",
     "tag": "Curated pick",
     "description": "A design-led watches pick from Serica.",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/serica_ref11741parade.webp",
     "affiliateUrl": "https://www.serica-watches.com/en/product/1174-parade/",
     "price": "$1,490",
     "startingVotes": 735
@@ -442,7 +442,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Ligne Roset.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/ligneroset_togoloveseat.webp",
     "affiliateUrl": "https://www.ligne-roset.com/us/modele/living/sofas/togo/2602",
     "price": "$6,575",
     "startingVotes": 728
@@ -454,7 +454,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Dyson.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/Dyson_Solarcycle%20Morph%20Floor.webp",
     "affiliateUrl": "https://www.dyson.com/lighting/floor-lamps/solarcycle-morph",
     "price": "$849",
     "startingVotes": 721
@@ -466,7 +466,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Grau.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/grau_salt.webp",
     "affiliateUrl": "https://www.grau.art/en/products/salt",
     "price": "$503",
     "startingVotes": 714
@@ -478,7 +478,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from JBL.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/jbl_flip6.webp",
     "affiliateUrl": "https://www.jbl.com/bluetooth-speakers/JBLFLIP6BLKAM.html",
     "price": "$130",
     "startingVotes": 707
@@ -490,7 +490,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Snow Peak.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/snowpeak_titaniumspork.webp",
     "affiliateUrl": "https://www.snowpeak.com/products/titanium-spork",
     "price": "$10",
     "startingVotes": 700
@@ -502,7 +502,7 @@ export const products = [
     "category": "Books",
     "tag": "Curated pick",
     "description": "A design-led books pick from Standards Manual.",
-    "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/standardsmanual_parksunitedstatesnationalpark.webp",
     "affiliateUrl": "https://standardsmanual.com/products/parks",
     "price": "$40",
     "startingVotes": 693
@@ -514,7 +514,7 @@ export const products = [
     "category": "Travel",
     "tag": "Curated pick",
     "description": "A design-led travel pick from Hoto.",
-    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/hoto_camplightrechargeableled.webp",
     "affiliateUrl": "https://hototools.com/products/camplight-rechargeable-led-camping-lantern",
     "price": "$60",
     "startingVotes": 686
@@ -526,7 +526,7 @@ export const products = [
     "category": "Travel",
     "tag": "Curated pick",
     "description": "A design-led travel pick from Anker.",
-    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/anker_solixeverfrostcooler.webp",
     "affiliateUrl": "https://www.anker.com/products/a17b3",
     "price": "$700",
     "startingVotes": 679
@@ -538,7 +538,7 @@ export const products = [
     "category": "Travel",
     "tag": "Curated pick",
     "description": "A design-led travel pick from Snow Peak.",
-    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/snowpeak_rechargeableminihozuki.webp",
     "affiliateUrl": "https://www.snowpeak.com/products/rechargeable-mini-hozuki",
     "price": "$70",
     "startingVotes": 672
@@ -550,7 +550,7 @@ export const products = [
     "category": "Coffee",
     "tag": "Curated pick",
     "description": "A design-led coffee pick from Wacaco.",
-    "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/wacaco_minipressogr2espressomachine.webp",
     "affiliateUrl": "https://www.wacaco.com/products/minipresso-gr2",
     "price": "$60",
     "startingVotes": 665
@@ -562,7 +562,7 @@ export const products = [
     "category": "Carry",
     "tag": "Curated pick",
     "description": "A design-led carry pick from Stelton.",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/stelton_em77jug1l.webp",
     "affiliateUrl": "https://www.stelton.com/en/products/em77-vacuum-jug",
     "price": "$120",
     "startingVotes": 658
@@ -574,7 +574,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from Solo Stove.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/solostove_mesasxl.webp",
     "affiliateUrl": "https://www.solostove.com/en-us/p/mesa",
     "price": "$110",
     "startingVotes": 651
@@ -586,7 +586,7 @@ export const products = [
     "category": "Travel",
     "tag": "Curated pick",
     "description": "A design-led travel pick from Outask.",
-    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/outask_campinglighttelescopic.webp",
     "affiliateUrl": "https://outask-td.com/products/telescopic-lantern",
     "price": "$150",
     "startingVotes": 644
@@ -598,7 +598,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Smeg.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/smeg_klf03electricketle.webp",
     "affiliateUrl": "https://www.smeg.com/us/products/KLF03",
     "price": "$275",
     "startingVotes": 637
@@ -610,7 +610,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Lego.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lego_wildflowerbouquet10313.webp",
     "affiliateUrl": "https://www.lego.com/en-us/product/wildflower-bouquet-10313",
     "price": "$60",
     "startingVotes": 630
@@ -622,7 +622,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Le Creuset.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lecreuset_signaturerounddutchoven.webp",
     "affiliateUrl": "https://www.lecreuset.com/signature-round-dutch-oven/LS2501.html",
     "price": "$420",
     "startingVotes": 623
@@ -634,7 +634,7 @@ export const products = [
     "category": "Personal",
     "tag": "Curated pick",
     "description": "A design-led personal pick from Gucci.",
-    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/gucci_bloombyforwomeneaudeparfum.webp",
     "affiliateUrl": "https://www.gucci.com/us/en/pr/beauty/fragrances/fragrances-for-women/bloom-eau-de-parfum-100ml-p-488830999990099",
     "price": "$60",
     "startingVotes": 616
@@ -646,7 +646,7 @@ export const products = [
     "category": "Personal",
     "tag": "Curated pick",
     "description": "A design-led personal pick from Aesop.",
-    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/aesop_rozueaudeparfum.webp",
     "affiliateUrl": "https://www.aesop.com/us/p/fragrance/floral/rozu-eau-de-parfum/",
     "price": "$200",
     "startingVotes": 609
@@ -658,7 +658,7 @@ export const products = [
     "category": "Books",
     "tag": "Curated pick",
     "description": "A design-led books pick from Assouline.",
-    "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/assouline_motherandchild.webp",
     "affiliateUrl": "https://www.assouline.com/products/mother-and-child",
     "price": "$120",
     "startingVotes": 602
@@ -670,7 +670,7 @@ export const products = [
     "category": "Books",
     "tag": "Curated pick",
     "description": "A design-led books pick from Phaidon.",
-    "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/phaidon_womanmade.webp",
     "affiliateUrl": "https://www.phaidon.com/store/design/woman-made-great-women-designers-9781838662850/",
     "price": "$60",
     "startingVotes": 595
@@ -682,7 +682,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Hatch.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/hatch_restore3.webp",
     "affiliateUrl": "https://www.hatch.co/restore",
     "price": "$170",
     "startingVotes": 588
@@ -694,7 +694,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from Stakt.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/stakt_originalfoldableyogamat.webp",
     "affiliateUrl": "https://staktmat.com/products/the-stakt-mat",
     "price": "$90",
     "startingVotes": 581
@@ -706,7 +706,7 @@ export const products = [
     "category": "Carry",
     "tag": "Curated pick",
     "description": "A design-led carry pick from Gucci.",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/gucci_mercatototebag.webp",
     "affiliateUrl": "https://www.gucci.com/us/en/pr/women/handbags/tote-bags-for-women/mercato-tote-bag-p-815452AAC7L1060",
     "price": "$3,600",
     "startingVotes": 574
@@ -718,7 +718,7 @@ export const products = [
     "category": "Personal",
     "tag": "Curated pick",
     "description": "A design-led personal pick from Kate McLeod.",
-    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/katemcleod_sleepstonesolidbodymoisturizerstarterkit.webp",
     "affiliateUrl": "https://www.katemcleod.com/products/sleep-stone",
     "price": "$45",
     "startingVotes": 567
@@ -730,7 +730,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Diptyque.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/diptyque_baeiscandle.webp",
     "affiliateUrl": "https://www.diptyqueparis.com/en_us/p/baies-berries-candle.html",
     "price": "$70",
     "startingVotes": 560
@@ -742,7 +742,7 @@ export const products = [
     "category": "Carry",
     "tag": "Curated pick",
     "description": "A design-led carry pick from Spigen.",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/spigen_iphone17seriescaseclassiclsmagfit.webp",
     "affiliateUrl": "https://www.spigen.com/products/iphone-classic-ls-magfit-case",
     "price": "$35",
     "startingVotes": 553
@@ -754,7 +754,7 @@ export const products = [
     "category": "Workspace",
     "tag": "Curated pick",
     "description": "A design-led workspace pick from Wokyis.",
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/wokyis_m5retrodockstationformacmini.webp",
     "affiliateUrl": "https://wokyis.com/products/retro-docking-station-for-mac-mini",
     "price": "$170",
     "startingVotes": 546
@@ -766,7 +766,7 @@ export const products = [
     "category": "Watches",
     "tag": "Curated pick",
     "description": "A design-led watches pick from Spigen.",
-    "image": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/spigen_applewatchclassicc1chargerstand.webp",
     "affiliateUrl": "https://www.spigen.com/products/apple-watch-classic-c1-stand",
     "price": "$20",
     "startingVotes": 539
@@ -778,7 +778,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from 8BitDo.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/eightbitdo_retromechanicalkeyboard.webp",
     "affiliateUrl": "https://www.8bitdo.com/retro-mechanical-keyboard/",
     "price": "$90",
     "startingVotes": 532
@@ -790,7 +790,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from 8BitDo.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/eightbitdo_retror8mouse.webp",
     "affiliateUrl": "https://www.8bitdo.com/retro-r8-mouse/",
     "price": "$50",
     "startingVotes": 525
@@ -802,7 +802,7 @@ export const products = [
     "category": "Carry",
     "tag": "Curated pick",
     "description": "A design-led carry pick from Spigen.",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/spigen_iphone17seriesclassicc1magfit.webp",
     "affiliateUrl": "https://www.spigen.com/products/iphone-classic-c1-magfit-case",
     "price": "$35",
     "startingVotes": 518
@@ -814,7 +814,7 @@ export const products = [
     "category": "Carry",
     "tag": "Curated pick",
     "description": "A design-led carry pick from Spigen.",
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/spigen_classiclsairpodspro3case.webp",
     "affiliateUrl": "https://www.spigen.com/products/airpods-pro-classic-ls-case",
     "price": "$45",
     "startingVotes": 511
@@ -826,7 +826,7 @@ export const products = [
     "category": "Tech",
     "tag": "Curated pick",
     "description": "A design-led tech pick from Native Union.",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/nativeunion_popphone.webp",
     "affiliateUrl": "https://www.nativeunion.com/products/pop-phone",
     "price": "$40",
     "startingVotes": 504
@@ -838,7 +838,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from ForeverSpin.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/foreverspin_stainlesssteelspinningtop.webp",
     "affiliateUrl": "https://foreverspin.com/products/stainless-steel-spinning-top",
     "price": "$47",
     "startingVotes": 497
@@ -850,7 +850,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Lego.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lego_ferrarif4010248.webp",
     "affiliateUrl": "https://www.lego.com/en-us/search?q=Ferrari%20F40",
     "price": "$25",
     "startingVotes": 490
@@ -862,7 +862,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from Printworks.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/printworks_artofchessset.webp",
     "affiliateUrl": "https://printworksmarket.com/products/art-of-chess",
     "price": "$60",
     "startingVotes": 483
@@ -874,7 +874,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from The Serious Toy Company.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/theserioustoycompany_tyrannosaurus.webp",
     "affiliateUrl": "https://theserioustoycompany.com/",
     "price": "$60",
     "startingVotes": 476
@@ -886,7 +886,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Lego.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lego_fifaworldcupofficialtrophy43020.webp",
     "affiliateUrl": "https://www.lego.com/en-us/product/fifa-world-cup-official-trophy-43020",
     "price": "$200",
     "startingVotes": 469
@@ -898,7 +898,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from Lego.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lego_gameboy72046.webp",
     "affiliateUrl": "https://www.lego.com/en-us/product/game-boy-72046",
     "price": "$60",
     "startingVotes": 462
@@ -910,7 +910,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from Cards Against Humanity.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/cardsagainsthumanity_internationaledition.webp",
     "affiliateUrl": "https://www.cardsagainsthumanity.com/products/cards-against-humanity-international-edition",
     "price": "$30",
     "startingVotes": 455
@@ -922,7 +922,7 @@ export const products = [
     "category": "Lifestyle",
     "tag": "Curated pick",
     "description": "A design-led lifestyle pick from Theory 11.",
-    "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/theory11_artisanplayingcards.webp",
     "affiliateUrl": "https://store.theory11.com/products/artisan",
     "price": "$20",
     "startingVotes": 448
@@ -934,7 +934,7 @@ export const products = [
     "category": "Home",
     "tag": "Curated pick",
     "description": "A design-led home pick from Lego.",
-    "image": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://assets.curated.supply/lego_landroverclassicdefender90.webp",
     "affiliateUrl": "https://www.lego.com/en-us/product/land-rover-classic-defender-90-10317",
     "price": "$240",
     "startingVotes": 441

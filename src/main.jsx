@@ -211,9 +211,12 @@ function App() {
                     <ArrowUp size={16} />
                     <span>{isLoadingVotes ? "..." : votes[id] || 0}</span>
                   </button>
-                  <a className="buy-button" href={product.affiliateUrl} target="_blank" rel="noreferrer sponsored noopener">
-                    Buy <ExternalLink size={15} />
-                  </a>
+                  <div className="purchase-actions">
+                    {product.price && <span className="product-price">{product.price}</span>}
+                    <a className="buy-button" href={product.affiliateUrl} target="_blank" rel="noreferrer sponsored noopener">
+                      Buy <ExternalLink size={15} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>

@@ -191,9 +191,10 @@ h1 {
 .image-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
-  filter: saturate(0.92);
+  background: #050505;
+  filter: saturate(0.98);
   transition: transform 300ms ease;
 }
 
@@ -251,6 +252,19 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+}
+
+.purchase-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.product-price {
+  color: #5d584f;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .vote-button, .buy-button {
