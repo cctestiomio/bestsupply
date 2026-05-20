@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { ArrowUp, ExternalLink, Search, SlidersHorizontal, WifiOff } from "lucide-react";
+import { ArrowLeft, ArrowUp, ExternalLink, Search, SlidersHorizontal, WifiOff } from "lucide-react";
 import { products as productData } from "./products";
 import { isSupabaseConfigured, supabase } from "./supabase";
 import "./styles.css";
@@ -28,6 +28,33 @@ function getOrCreateVoterId() {
   return id;
 }
 
+function getHashRoute() {
+  const hash = window.location.hash || "";
+  const match = hash.match(/^#product\/(.+)$/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function productPath(product) {
+  return `#product/${encodeURIComponent(product.id)}`;
+}
+
+function ProductImage({ product, large = false }) {
+  const hasImage = Boolean(product.image && product.image.trim());
+  return (
+    <div className={large ? "product-image product-image-large" : "product-image"}>
+      {hasImage ? (
+        <img src={product.image} alt={`${product.brand} ${product.name}`} />
+      ) : (
+        <div className="image-placeholder" aria-label={`${product.name} image placeholder`}>
+          <span>{product.brand}</span>
+          <strong>{product.name}</strong>
+          <small>Add licensed product image in products.js</small>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function App() {
   const [votes, setVotes] = useState(startingVoteMap);
   const [votedIds, setVotedIds] = useState(() => {
@@ -39,6 +66,13 @@ function App() {
   const [query, setQuery] = useState("");
   const [isLoadingVotes, setIsLoadingVotes] = useState(true);
   const [voteError, setVoteError] = useState("");
+  const [routeProductId, setRouteProductId] = useState(getHashRoute());
+
+  useEffect(() => {
+    const onHashChange = () => setRouteProductId(getHashRoute());
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   useEffect(() => {
     async function loadGlobalVotes() {
@@ -133,29 +167,31 @@ function App() {
     }
   }
 
+  const currentProduct = routeProductId ? productData.find((product) => product.id === routeProductId) : null;
+
   return (
     <main>
       <header className="site-header">
         <div className="brand-row">
-          <a className="logo" href="/" aria-label="Best Supply home">Best Supply</a>
+          <a className="logo" href="#" aria-label="Best Supply home">Best Supply</a>
           <nav>
             <a href="#products">Products</a>
-            
             <a href="#about">About</a>
           </nav>
         </div>
 
-        <section className="hero">
-          <p className="eyebrow">Community-ranked product directory</p>
-          <h1>Best-in-class products, voted by people with taste.</h1>
-          <p className="hero-copy">
-            A minimal directory for discovering the most loved gear, tools, desk objects, bags, audio, and everyday essentials.
-          </p>
-          <div className="hero-actions">
-            <a className="primary-link" href="#products">Browse products</a>
-            
-          </div>
-        </section>
+        {!currentProduct && (
+          <section className="hero">
+            <p className="eyebrow">Community-ranked product directory</p>
+            <h1>Best-in-class products, voted by people with taste.</h1>
+            <p className="hero-copy">
+              A minimal directory for discovering the most loved gear, tools, desk objects, bags, audio, and everyday essentials.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-link" href="#products">Browse products</a>
+            </div>
+          </section>
+        )}
       </header>
 
       {voteError && (
@@ -165,70 +201,156 @@ function App() {
         </section>
       )}
 
-      <section className="controls" id="products">
-        <div className="search-box">
-          <Search size={17} />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products, brands, categories..." />
-        </div>
-        <div className="select-box">
-          <SlidersHorizontal size={17} />
-          <select value={sort} onChange={(event) => setSort(event.target.value)}>
-            <option value="top">Top voted</option>
-            <option value="new">Newest</option>
-            <option value="az">A–Z</option>
-          </select>
-        </div>
-      </section>
+      {currentProduct ? (
+        <ProductDetail product={currentProduct} votes={votes} votedIds={votedIds} isLoadingVotes={isLoadingVotes} vote={vote} />
+      ) : (
+        <>
+          <section className="controls" id="products">
+            <div className="search-box">
+              <Search size={17} />
+              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products, brands, categories..." />
+            </div>
+            <div className="select-box">
+              <SlidersHorizontal size={17} />
+              <select value={sort} onChange={(event) => setSort(event.target.value)}>
+                <option value="top">Top voted</option>
+                <option value="new">Newest</option>
+                <option value="az">A–Z</option>
+              </select>
+            </div>
+          </section>
 
-      <section className="category-row" aria-label="Product categories">
-        {categories.map((item) => (
-          <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>
-            {item}
-          </button>
-        ))}
-      </section>
+          <section className="category-row" aria-label="Product categories">
+            {categories.map((item) => (
+              <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>
+                {item}
+              </button>
+            ))}
+          </section>
 
-      <section className="product-grid">
-        {filteredProducts.map((product) => {
-          const id = productKey(product.id);
-          const hasVoted = votedIds.includes(id);
+          <section className="product-grid">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                votes={votes}
+                votedIds={votedIds}
+                isLoadingVotes={isLoadingVotes}
+                vote={vote}
+              />
+            ))}
+          </section>
+        </>
+      )}
 
-          return (
-            <article className="product-card" key={product.id}>
-              <a className="image-wrap" href={product.affiliateUrl} target="_blank" rel="noreferrer sponsored noopener">
-                <img src={product.image} alt={`${product.brand} ${product.name}`} />
-                <span>{product.tag}</span>
-              </a>
-              <div className="product-content">
-                <div>
-                  <p className="category-label">{product.category}</p>
-                  <h2>{product.name}</h2>
-                  <p className="brand">{product.brand}</p>
-                  <p className="description">{product.description}</p>
-                </div>
-                <div className="card-actions">
-                  <button className={hasVoted ? "vote-button voted" : "vote-button"} onClick={() => vote(product.id)} disabled={hasVoted || isLoadingVotes}>
-                    <ArrowUp size={16} />
-                    <span>{isLoadingVotes ? "..." : votes[id] || 0}</span>
-                  </button>
-                  <div className="purchase-actions">
-                    {product.price && <span className="product-price">{product.price}</span>}
-                    <a className="buy-button" href={product.affiliateUrl} target="_blank" rel="noreferrer sponsored noopener">
-                      Buy <ExternalLink size={15} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </section>
-
-      <footer>
+      <footer id="about">
         <p>Best Supply</p>
         <p>Minimal product discovery, ranked by the community.</p>
       </footer>
     </main>
+  );
+}
+
+function ProductCard({ product, votes, votedIds, isLoadingVotes, vote }) {
+  const id = productKey(product.id);
+  const hasVoted = votedIds.includes(id);
+
+  return (
+    <article className="product-card" onClick={() => { window.location.hash = productPath(product); }}>
+      <a className="image-wrap" href={productPath(product)} onClick={(event) => event.stopPropagation()}>
+        <ProductImage product={product} />
+        <span>{product.tag}</span>
+      </a>
+      <div className="product-content">
+        <div>
+          <p className="category-label">{product.category}</p>
+          <h2>{product.name}</h2>
+          <p className="brand">{product.brand}</p>
+          <p className="description">{product.description}</p>
+        </div>
+        <div className="card-actions">
+          <button className={hasVoted ? "vote-button voted" : "vote-button"} onClick={(event) => { event.stopPropagation(); vote(product.id); }} disabled={hasVoted || isLoadingVotes}>
+            <ArrowUp size={16} />
+            <span>{isLoadingVotes ? "..." : votes[id] || 0}</span>
+          </button>
+          <div className="purchase-actions">
+            {product.price && <span className="product-price">{product.price}</span>}
+            <a className="buy-button" href={product.affiliateUrl} onClick={(event) => event.stopPropagation()} target="_blank" rel="noreferrer sponsored noopener">
+              Buy <ExternalLink size={15} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProductDetail({ product, votes, votedIds, isLoadingVotes, vote }) {
+  const id = productKey(product.id);
+  const hasVoted = votedIds.includes(id);
+  const related = productData
+    .filter((item) => item.id !== product.id && item.category === product.category)
+    .slice(0, 3);
+  const featured = productData.filter((item) => item.id !== product.id).slice(0, 3);
+
+  return (
+    <section className="detail-page">
+      <a className="back-link" href="#products"><ArrowLeft size={16} /> Back to products</a>
+
+      <section className="detail-hero">
+        <ProductImage product={product} large />
+        <div className="detail-summary">
+          <p className="category-label">{product.brand} · {product.category}</p>
+          <h1>{product.name}</h1>
+          <p className="detail-description">{product.description}</p>
+          <div className="detail-actions">
+            <button className={hasVoted ? "vote-button voted" : "vote-button"} onClick={() => vote(product.id)} disabled={hasVoted || isLoadingVotes}>
+              <ArrowUp size={16} />
+              <span>{isLoadingVotes ? "..." : votes[id] || 0}</span>
+            </button>
+            {product.price && <span className="detail-price">{product.price}</span>}
+            <a className="buy-button" href={product.affiliateUrl} target="_blank" rel="noreferrer sponsored noopener">
+              Buy <ExternalLink size={15} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="detail-about">
+        <h2>About</h2>
+        <p>{product.about || `${product.name} by ${product.brand} is listed as a community pick in ${product.category}. Add a richer product write-up in products.js when you publish your final affiliate page.`}</p>
+        <p className="image-note">Image note: this template intentionally avoids copied directory images. Add images from your own photography, a merchant-approved affiliate feed, or another licensed source.</p>
+      </section>
+
+      {related.length > 0 && (
+        <ProductRail title={`More in ${product.category}`} products={related} />
+      )}
+      <ProductRail title="Featured in" products={featured} />
+    </section>
+  );
+}
+
+function ProductRail({ title, products }) {
+  return (
+    <section className="product-rail">
+      <div className="rail-heading">
+        <h2>{title}</h2>
+        <a href="#products">See all</a>
+      </div>
+      <div className="rail-grid">
+        {products.map((product) => (
+          <a className="rail-card" href={productPath(product)} key={product.id}>
+            <ProductImage product={product} />
+            <div className="rail-meta">
+              <p>{product.brand} · {product.category}</p>
+              <strong>{product.name}</strong>
+              {product.price && <span>{product.price}</span>}
+            </div>
+            <span className="rail-arrow"><ExternalLink size={16} /></span>
+          </a>
+        ))}
+      </div>
+    </section>
   );
 }
 
